@@ -1,0 +1,89 @@
+* {
+    font-family: "Geist";
+}
+
+#sideBar {
+    display: flex;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    max-height: calc(100vh - 16px);
+    margin: 8px;
+    background: #fff;
+    border-radius: 28px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 16px;
+}
+
+ul {
+    border-top: 1px solid #ececf0;
+    border-bottom: 1px solid #ececf0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+    overflow-y: auto;
+}
+
+li {
+    padding: 12px 10px;
+    font-weight: 600;
+    color: #3f4651;
+    border-radius: 10px;
+    transition: background 0.15s;
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+li:hover {
+    background: #efefef;
+}
+
+#logo {
+    padding-bottom: 24px;
+    padding: 8px;
+}
+
+#avatar {
+    padding: 8px;
+    border-radius: 999px;
+    aspect-ratio: 1/1;
+    margin-top: 8px;
+    background: rgb(244, 244, 244);
+}
+
+#avatar:hover{
+    background: #e0e0e0;
+}
+
+#userFoot {
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+}
+
+footer {
+    display: flex;
+    flex-direction: row;
+}
+
+#settings {
+    padding: 8px;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+#settings:hover {
+    background: #efefef;
+}
+
+#cog {
+    transition: transform 0.3s;
+}
+
+#cog:hover {
+    transform: rotate(90deg);
+}
