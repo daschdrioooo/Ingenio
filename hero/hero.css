@@ -291,3 +291,26 @@ body {
 .btn--lg:hover svg {
     transform:translateX(3px);
 }
+
+.hero-bg {
+    position:relative;
+    isolation:isolate;
+    overflow:hidden;
+    min-height:calc(100vh - var(--nav-h) - 1px);
+}
+
+.hero-bg::before {
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:-1;
+    --dot:rgba(0,0,0,0.42);
+    --gap:11px;
+    background-image:radial-gradient(circle, var(--dot) 1.2px, transparent 1.6px);
+    background-size:var(--gap) var(--gap);
+    background-position:center bottom;
+    -webkit-mask-image:linear-gradient(to top, #000 0%,rgba(0,0,0,0.75) 20%, rgba(0,0,0,0.3) 42%, transparent 62%);
+    mask-image:linear-gradient(to top, #000 0%,rgba(0,0,0,0.75) 20%, rgba(0,0,0,0.3) 42%, transparent 62%);
+    pointer-events:none;
+}
+
