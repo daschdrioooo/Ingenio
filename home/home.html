@@ -11,15 +11,16 @@
 
     <body>
         <div id="sideBar">
+            <div id="nav">
             <header>
             <img id="logo" src="ingenio-logo-black.png" width="100" height="auto">
             </header>
-
+            <div></div>
             <ul>
-                <li>Lessons</li>
-                <li>Practice papers</li>
-                <li>Practice questions</li>
-                <li>Ai Tutor</li>
+                <li data-panel="lessons">Lessons</li>
+                <li data-panel="practice-papers">Practice papers</li>
+                <li data-panel="practice-questions">Practice questions</li>
+                <li data-panel="ai-tutor">Ai Tutor</li>
             </ul>
             <footer>
                     <div id="userFoot">
@@ -32,6 +33,11 @@
                         <i id="cog" data-lucide="settings"></i>
                     </div>
             </footer>
+            </div>
+            <div class="panel" id="lessons">lessons stuff</div>
+            <div class="panel" id="practice-papers">practice papers stuff</div>
+            <div class="panel" id="practice-questions">practice questions stuff</div>
+            <div class="panel" id="ai-tutor">ai tutor stuff</div>
         </div>
         <script src="home.js"></script>
     </body>

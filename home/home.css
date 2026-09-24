@@ -4,8 +4,8 @@
 
 #sideBar {
     display: flex;
-    display: flex;
-    flex-direction: column;
+    flex-direction: row;          /* was column */
+    transition: width 0.3s;
     width: 400px;
     max-height: calc(100vh - 16px);
     margin: 8px;
@@ -36,6 +36,10 @@ li {
     transition: background 0.15s;
     margin-left: 8px;
     cursor: pointer;
+}
+
+li.selected {
+    background: #efefef;
 }
 
 li:hover {
@@ -92,4 +96,25 @@ footer {
 
 #cog:hover {
     transform: rotate(90deg);
+}
+
+#nav {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    flex-shrink: 0;
+}
+
+.panel {
+    display: none;
+}
+
+.panel.active {
+    display: block;
+    flex: 1;
+    padding-left: 24px;
+}
+
+#sideBar.open {
+    width: 800px;
 }
