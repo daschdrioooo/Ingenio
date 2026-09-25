@@ -9,7 +9,15 @@ items.forEach(li => {
         items.forEach(i => i.classList.remove("selected"));
         li.classList.add("selected");
         panels.forEach(p => p.classList.remove("active"));
-        document.getElementById(li.dataset.panel).classList.add("active");
+        document.querySelectorAll(".background").forEach(background => {
+            background.classList.remove("open");
+        });
+
+        const panel = document.getElementById(li.dataset.panel);
+        const background = document.getElementById(`${li.dataset.panel}Background`);
+
+        panel.classList.add("active");
+        background?.classList.add("open");
         sideBar.classList.add("open");
     });
 });

@@ -118,3 +118,43 @@ footer {
 #sideBar.open {
     width: 800px;
 }
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    display: none;
+}
+
+.background.open {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    display: block;
+}
+
+#lessonsBackground {
+    background-color: pink;
+}
+
+#practice-papersBackground {
+    background-color: lightgreen;
+}
+
+#practice-questionsBackground {
+    background-color: rgb(255, 201, 100);
+}
+
+#ai-tutorBackground {
+    background-color: lightblue;
+}
