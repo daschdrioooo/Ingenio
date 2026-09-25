@@ -21,3 +21,18 @@ items.forEach(li => {
         sideBar.classList.add("open");
     });
 });
+
+document.querySelectorAll(".tabs").forEach(tabGroup => {
+    const tabs = tabGroup.querySelectorAll(".tab");
+    const contents = tabGroup.parentElement.querySelectorAll(".tab-content");
+
+    tabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+            tabs.forEach(t => t.classList.remove("active"));
+            tab.classList.add("active");
+
+            contents.forEach(c => c.classList.remove("active"));
+            document.getElementById(tab.dataset.tab).classList.add("active");
+        });
+    });
+});

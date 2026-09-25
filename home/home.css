@@ -14,6 +14,7 @@
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     padding: 16px;
+    max-width: 670px;
 }
 
 ul {
@@ -144,7 +145,7 @@ footer {
 }
 
 #lessonsBackground {
-    background-color: pink;
+    background-color: rgba(255, 0, 0, 0.511);
 }
 
 #practice-papersBackground {
@@ -157,4 +158,48 @@ footer {
 
 #ai-tutorBackground {
     background-color: lightblue;
+}
+
+.tabs {
+    display: flex;
+    background: #f2f2f2;
+    border-radius: 999px;
+    padding: 4px;
+    gap: 4px;
+}
+
+.tab {
+    border: none;
+    background: transparent;
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #ef4444;
+    transition: background 0.15s;
+}
+
+.tab.active {
+    background: #ef4444;
+    color: #fff;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+    height: 100%;
+}
+
+#edexcelLessons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+    height: 70%;
+    padding: 16px;
+    border-radius: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
 }
