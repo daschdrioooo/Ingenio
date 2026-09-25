@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Log in - Ingenio</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet" />
+        <script src="https://unpkg.com/lucide@latest"></script>
+        <link rel="stylesheet" href="login.css">
+    </head>
+    <body>
+        <header class="auth-top">
+            <a href="../hero/hero.html" class="logo">
+                <img class="logo__img" src="../images/ingenio-logo-black.png" width="1290" height="410">
+            </a>
+            <a href="../hero/hero.html" class="back"><i data-lucide="arrow-left"></i> Back to home</a>
+        </header>
+        <main class="auth">
+            <div class="card">
+                <h1 class="card__title">Welcome back!</h1>
+                <p class="card__sub">ERPCWEIOUNRPWOIEUNXIUWNIEXIQUWEXMIuwem log in bro</p>
+                <button type="button" class="btn btn--outline oauth">
+                    <svg class="g-logo" viewBox="0 0 24 24">
+                        <path fill="#4285F4" d="M23.52 12.27c0-.85-.08-1.67-.22-2.45H12v4.64h6.47a5.53 5.53 0 0 1-2.4 3.63v3.01h3.88c2.27-2.09 3.57-5.17 3.57-8.83z"/>
+                        <path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.95-2.9l-3.88-3.01c-1.08.72-2.45 1.15-4.07 1.15-3.13 0-5.78-2.11-6.73-4.95H1.26v3.1A12 12 0 0 0 12 24z"/>
+                        <path fill="#FBBC05" d="M5.27 14.29A7.2 7.2 0 0 1 4.9 12c0-.8.14-1.57.38-2.29V6.6H1.26A12 12 0 0 0 0 12c0 1.94.46 3.77 1.26 5.4l4.01-3.11z"/>
+                        <path fill="#EA4335" d="M12 4.77c1.76 0 3.34.61 4.59 1.8l3.44-3.44C17.95 1.19 15.23 0 12 0A12 12 0 0 0 1.26 6.6l4.01 3.11C6.22 6.88 8.87 4.77 12 4.77z"/>
+                    </svg>
+                    Continue with Google
+                </button>
+                <div class="divider">or</div>
+                <form id="loginForm" novalidate>
+                    <div class="field" id="emailField">
+                        <div class="field__top">
+                            <label class="label" for="email">Email</label>
+                        </div>
+                        <input class="input" id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email">
+                        <p class="error"><i data-lucide="circle-alert"></i><span></span></p>
+                    </div>
+                    <div class="field" id="passwordField">
+                        <div class="field__top">
+                            <label class="label" for="password">Password</label>
+                            <a href="#forgot" class="link">Forgot password?</a>
+                        </div>
+                        <div class="input-wrap">
+                            <input class="input input--pw" id="password" name="password" type="password" placeolder="Enter your password" autocomplete="current-password">
+                            <button type="button" class="toggle-pw" id="togglePw">
+                                <i data-lucide="eye" class="icon-show"></i>
+                                <i data-lucide="eye-off" class="icon-hide"></i>
+                            </button>
+                        </div>
+                        <p class="error"><i data-lucide="circle-alert"></i><span></span></p>
+                    </div>
+                    <label class="remember">
+                        <input type="checkbox" name="remember" checked>
+                        Keep me logged in
+                    </label>
+                    <button type="submit" class="btn btn--solid submit" id="submitBtn">
+                        <span class="label-text">Log in</span>
+                        <i data-lucide="loader-circle" class="spinner"></i>
+                    </button>
+                </form>
+                <p class="card__foot">New to Ingenio? <a href="#signup">Create a free account</a></p>
+            </div>
+        </main>
+
+        <script src="login.js"></script>
+    </body>
+</html>
