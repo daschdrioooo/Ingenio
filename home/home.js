@@ -36,3 +36,18 @@ document.querySelectorAll(".tabs").forEach(tabGroup => {
         });
     });
 });
+
+document.getElementById("retractBtn").addEventListener("click", () => {
+    sideBar.classList.add("retracted");
+    document.body.classList.add("retracted");
+});
+
+document.getElementById("expandBtn").addEventListener("click", () => {
+    sideBar.classList.remove("retracted");
+    document.body.classList.remove("retracted");
+});
+
+document.getElementsByClassName("lessonLink")[0].addEventListener("click", () => {
+    sideBar.classList.add("retracted");
+    document.body.classList.add("retracted");
+});
