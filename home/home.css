@@ -4,10 +4,10 @@
 
 #sideBar {
     display: flex;
-    flex-direction: row;          /* was column */
+    flex-direction: row;
     transition: width 0.3s;
     width: 400px;
-    max-height: calc(100vh - 16px);
+    max-height: calc(100vh - 32px);
     margin: 8px;
     background: #fff;
     border-radius: 28px;
@@ -121,7 +121,7 @@ footer {
 }
 
 .background {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -133,14 +133,6 @@ footer {
 }
 
 .background.open {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    z-index: -1;
     display: block;
 }
 
@@ -202,4 +194,49 @@ footer {
     padding: 16px;
     border-radius: 16px;
     border: 1px solid rgba(0, 0, 0, 0.2);
+    overflow-y: auto
+}
+
+details {
+    border-radius: 16px;
+    margin: 4px 0;
+}
+
+summary {
+    padding: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+    transition: background 0.15s;
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
+details[open] > summary {
+    background: #eaeaea;
+    border-radius: 16px;
+}
+
+details > details {
+    margin-left: 16px;
+}
+
+.chevron {
+    transition: transform 0.2s;
+    float: left;
+    padding-right: 8px;
+}
+
+details[open] > summary .chevron {
+    transform: rotate(90deg);
+}
+
+#gcseHigher {
+    display: none;
+}
+
+#gcseFoundation {
+    display: none;  
 }
