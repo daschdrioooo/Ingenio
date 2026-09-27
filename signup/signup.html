@@ -3,12 +3,11 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>Log in - Ingenio</title>
+        <title>Sign up - Ingenio</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet" />
-        <script src="https://unpkg.com/lucide@latest"></script>
-        <link rel="stylesheet" href="login.css">
+        <link rel="stylesheet" href="../login/login.css">
     </head>
     <body>
         <header class="auth-top">
@@ -18,10 +17,10 @@
             <a href="../hero/hero.html" class="back"><i data-lucide="arrow-left"></i> Back to home</a>
         </header>
         <main class="auth">
-            <div class="card">
-                <h1 class="card__title">Welcome back!</h1>
-                <p class="card__sub">ERPCWEIOUNRPWOIEUNXIUWNIEXIQUWEXMIuwem log in bro</p>
-                <form id="loginForm" novalidate>
+            <div class="card" id="signupCard">
+                <h1 class="card__title">Create your account</h1>
+                <p class="card__sub">For free!</p>
+                <form id="signupForm" class="form" novalidate>
                     <p class="form-alert" id="formAlert" role="alert"><i data-lucide="circle-alert"></i><span></span></p>
                     <div class="field" id="emailField">
                         <div class="field__top">
@@ -33,32 +32,36 @@
                     <div class="field" id="passwordField">
                         <div class="field__top">
                             <label class="label" for="password">Password</label>
-                            <a href="#forgot" class="link">Forgot password?</a>
                         </div>
                         <div class="input-wrap">
-                            <input class="input input--pw" id="password" name="password" type="password" placeholder="Enter your password" autocomplete="current-password">
+                            <input class="input input--pw" id="password" name="password" type="password" placeholder="Create a password" autocomplete="new-password">
                             <button type="button" class="toggle-pw" id="togglePw">
                                 <i data-lucide="eye" class="icon-show"></i>
                                 <i data-lucide="eye-off" class="icon-hide"></i>
                             </button>
                         </div>
+                        <p class="hint">At least 8 characters</p>
                         <p class="error"><i data-lucide="circle-alert"></i><span></span></p>
                     </div>
-                    <label class="remember">
-                        <input type="checkbox" name="remember" checked>
-                        Keep me logged in
-                    </label>
                     <button type="submit" class="btn btn--solid submit" id="submitBtn">
-                        <span class="label-text">Log in</span>
+                        <span class="label-text">Create account</span>
                         <i data-lucide="loader-circle" class="spinner"></i>
                     </button>
                 </form>
-                <p class="card__foot">New to Ingenio? <a href="../signup/signup.html">Create a free account</a></p>
+                <p class="card__foot">Already have an account? <a href="../login/login.html">Log in</a></p>
+            </div>
+            <div class="card sent" id="sentCard" hidden>
+                <div class="sent__icon"><i data-lucide="mail"></i></div>
+                <h1 class="card__title">Check your email</h1>
+                <p class="card__sub">We've sent a link tp <strong id="sentEmail"></strong>. Click it to confirm your account and continue setup.</p>
+                <button type="button" class="btn btn--outline" id="resendBtn">Resend email</button>
+                <p class="card__foot">Wrong email? <a href="#" id="changeEmail">Use a different email address</a></p>
             </div>
         </main>
 
+        <script src="https://unpkg.com/lucide@latest"></script>
         <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
         <script src="../shared/supabase.js"></script>
-        <script src="login.js"></script>
+        <script src="signup.js"></script>
     </body>
 </html>

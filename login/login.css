@@ -127,7 +127,7 @@ body {
     font-weight:500;
     text-decoration:none;
     white-space:nowrap;
-    cursor:default;
+    cursor:pointer;
     transition:background 0.15s ease,opacity 0.15s ease,border-color 0.15s ease;
 }
 
@@ -255,7 +255,7 @@ body {
     display:none;
     align-items:center;
     gap:6px;
-    margin-bottom:8px;
+    margin-top:8px;
     color:var(--error);
     font-size:13px;
 }
@@ -300,8 +300,12 @@ body {
     display:none;
 }
 
-.toggle-pw.showing .icon-hide {
+.toggle-pw.showing .icon-show {
     display:none;
+}
+
+.toggle-pw.showing .icon-hide {
+    display:block;
 }
 
 .remember {
@@ -376,3 +380,73 @@ body {
     color:inherit;
 }
 
+.form-alert {
+    display:none;
+    align-items:flex-start;
+    gap:8px;
+    margin-bottom:20px;
+    padding:12px 14px;
+    border:1px solid rgba(217,45,32,0.25);
+    color:var(--error);
+    border-radius:10px;
+    background:rgba(217,45,32,0.05);
+    font-size:13px;
+    line-height:1.45;
+}
+
+.form-alert.show {
+    display:flex;
+}
+
+.form-alert svg {
+    width:16px;
+    height:16px;
+    flex-shrink:0;
+    margin-top:1px;
+}
+
+.form {
+    margin-top:28px;
+}
+
+.hint {
+    margin-top:8px;
+    color:var(--faint);
+    font-size:13px;
+}
+
+.field.has-error .hint {
+    display:none;
+}
+
+.sent {
+    text-align:center;
+}
+
+.sent__icon {
+    display:grid;
+    place-items:center;
+    width:56px;
+    height:56px;
+    margin:0 auto 20px;
+    border-radius:14px;
+    background:#f2f2f2;
+}
+
+.sent__icon svg {
+    width:26px;
+    height:26px;
+}
+
+.sent .card__sub strong {
+    color:var(--fg);
+    font-weight:500;
+}
+
+.sent .btn {
+    margin-top:28px;
+}
+
+[hidden] {
+    display:none !important;
+}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Set up your account - Ingenio</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="setup.css">
+    </head>
+    <body class="checking">
+        <header class="auth-top">
+            <a href="../hero/hero.html" class="logo">
+                <img class="logo__img" src="../images/ingenio-logo-black.png" width="1290" height="410">
+            </a>
+            <button type="button" class="signout" id="signOut"><i data-lucide="log-out"></i> Log out</button>
+        </header>
+        <main class="auth">
+            <form class="card" id="setupForm" novalidate>
+                <div class="progress">
+                    <div class="progress__top">
+                        <span class="progress__label">Set up your account</span>
+                        <span class="progress__count" id="stepCount">Step 1 of 5</span>
+                    </div>
+                    <div class="progress__track">
+                        <span class="progress__seg"></span><span class="progress__seg"></span><span class="progress__seg"></span><span class="progress__seg"></span><span class="progress__seg"></span>
+                    </div>
+                </div>
+                <div class="steps">
+                    <section class="step active" id="usernameSection">
+                        <h1 class="q">Let's get you set up!</h1>
+                        <p class="q-hint">Pick a username and optionally a profile picture.</p>
+                        <div class="profile">
+                            <div class="avatar" id="avatar">
+                                <span id="avatarInitial"><i data-lucide="user"></i></span>
+                            </div>
+                            <div class="profile__fields">
+                                <label class="field-label" for="username">Username</label>
+                                <div class="input-wrap">
+                                    <span class="input-prefix">@</span>
+                                    <input class="input" id="username" name="username" type="text" maxlength="20" placeholder="yourname" autocomplete="username" spellcheck="false">
+                                    <span class="counter" id="counter">0/20</span>
+                                </div>
+                                <div class="avatar-actions">
+                                    <label class="btn btn--outline" for="pfp"><i data-lucide="image-plus"></i> <span id="uploadLabel">Upload photo</span></label>
+                                    <input type="file" id="pfp" name="pfp" accept="image/png,image/jpeg,image/webp" hidden>
+                                    <button type="button" class="btn btn--ghost" id="removePfp" hidden>Remove</button>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="error"><i data-lucide="circle-alert"></i><span></span></p>
+                    </section>
+
+                    <fieldset class="step" id="yearSection">
+                        <legend class="q">What year are you in?</legend>
+                        <p class="q-hint">We will match your questions with the year you're in.</p>
+                        <div class="chips">
+                            <label class="chip chip--wide"><input type="radio" name="year" value="9"><span>Year 9</span></label>
+                            <label class="chip chip--wide"><input type="radio" name="year" value="10"><span>Year 10</span></label>
+                            <label class="chip chip--wide"><input type="radio" name="year" value="11"><span>Year 11</span></label>
+                            <label class="chip chip--wide"><input type="radio" name="year" value="12"><span>Year 12</span></label>
+                            <label class="chip chip--wide"><input type="radio" name="year" value="13"><span>Year 13</span></label>
+                        </div>
+                        <p class="error"><i data-lucide="circle-alert"></i><span></span></p>
+                    </fieldset>
+
+                    <fieldset class="step" id="subjectSection">
+                        <legend class="q">Which are you studying?</legend>
+                        <p class="q-hint">You can change this later.</p>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="subject" value="maths">
+                                <span class="option__body">
+                                    <span class="option__head">
+                                        <span class="option__icon"><i data-lucide="calculator"></i></span>
+                                        <span class="option__check"><i data-lucide="check"></i></span>
+                                    </span>
+                                    <span class="option__title">Maths</span>
+                                    <span class="option__desc" id="mathsDesc"></span>
+                                </span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="subject" value="further">
+                                <span class="option__body">
+                                    <span class="option__head">
+                                        <span class="option__icon"><i data-lucide="sigma"></i></span>
+                                        <span class="option__check"><i data-lucide="check"></i></span>
+                                    </span>
+                                    <span class="option__title">Further Maths</span>
+                                    <span class="option__desc" id="furtherDesc"></span>
+                                </span>
+                            </label>
+                        </div>
+                        <p class="error"><i data-lucide="circle-alert"></i><span></span></p>
+                    </fieldset>
+
+                    <fieldset class="step" id="currentSection">
+                        <legend class="q">What's your current grade?</legend>
+                        <p class="q-hint">Current school grade</p>
+                        <div class="chips" data-grades="current"></div>
+                        <p class="error"><i data-lucide="circle-alert"></i><span></span></p>
+                    </fieldset>
+
+                    <fieldset class="step" id="targetSection">
+                        <legend class="q">What grade are you aiming for?</legend>
+                        <p class="q-hint">Aim high :D</p>
+                        <div class="chips" data-grades="target"></div>
+                        <p class="error"><i data-lucide="circle-alert"></i><span></span></p>
+                    </fieldset>
+                </div>
+                <p class="form-alert" id="formAlert" role="alert"><i data-lucide="circle-alert"></i><span></span></p>
+                <div class="actions">
+                    <button type="button" class="btn btn--ghost btn--lg" id="backBtn" data-invisible><i data-lucide="arrow-left"></i> Back</button>
+                    <button type="submit" class="btn btn--solid btn--lg submit" id="submitBtn">
+                        <span id="submitText">Continue</span>
+                        <i data-lucide="arrow-right" class="arrow"></i>
+                        <i data-lucide="loader-circle" class="spinner"></i>
+                    </button>
+                </div>
+            </form>
+        </main>
+
+        <script src="https://unpkg.com/lucide@latest"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        <script src="../shared/supabase.js"></script>
+        <script src="setup.js"></script>
+    </body>
+</html>
