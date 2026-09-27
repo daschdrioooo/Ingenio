@@ -24,15 +24,19 @@
                 <li data-panel="ai-tutor">Ai Tutor</li>
             </ul>
             <footer>
-                    <div id="userFoot">
-                        <div class="avatar">
-                            <i id="avatar" data-lucide="user"></i>
-                        </div>
-                        <div style="padding: 8px; margin-top: 8px;">user</div>
+                <div id="profileMenu" class="profileMenu" role="menu" hidden>
+                    <div class="profile-menu__email" id="userEmail"></div>
+                    <button type="button" class="profile-menu__item" role="menuitem" id="menuSettings"><i data-lucide="settings"></i> Settings</button>
+                    <button type="button" class="profile-menu__item profile-menu__item--danger" role="menuitem" id="logOutBtn"><i data-lucide="log-out"></i> <span>Log out</span></button>
+                </div>
+                <div id="userFoot" role="button" tabindex="0">
+                    <div class="avatar" id="avatarBox"><i data-lucide="user"></i></div>
+                    <div class="user-info">
+                        <div class="user-name" id="username"></div>
+                        <div class="user-meta" id="userMeta"></div>
                     </div>
-                    <div id="settings">
-                        <i id="cog" data-lucide="settings"></i>
-                    </div>
+                </div>
+                <button id="settings"><i id="cog" data-lucide="settings"></i></button>
             </footer>
             </div>
             <div class="panel" id="lessons">
@@ -326,6 +330,8 @@
         <div class="background" id="practice-papersBackground"></div>
         <div class="background" id="practice-questionsBackground"></div>
         <div class="background" id="ai-tutorBackground"></div>
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        <script src="../shared/supabase.js"></script>
         <script src="home.js"></script>
     </body>
 </html>
