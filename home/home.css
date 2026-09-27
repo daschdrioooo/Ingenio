@@ -309,7 +309,11 @@ body.retracted #miniPill {
 }
 
 #pptViewer {
-    margin: 16px;
+    margin: 32px;
     width: calc(100% - 64px);
-    height: calc(100% - 64px);
+    height: calc(100% -  64px);
+}
+
+iframe {
+    border: none;
 }

@@ -47,16 +47,14 @@ document.getElementById("expandBtn").addEventListener("click", () => {
     document.body.classList.remove("retracted");
 });
 
-document.getElementsByClassName("lessonLink")[0].addEventListener("click", () => {
-    sideBar.classList.add("retracted");
-    document.body.classList.add("retracted");
+document.querySelectorAll(".lessonLink").forEach(link => {
+    link.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        document.getElementById("pptViewer").src =
+            `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(link.dataset.ppt)}`;
+
+        sideBar.classList.add("retracted");
+        document.body.classList.add("retracted");
+    });
 });
-
-const url = "https://raw.githubusercontent.com/daschdrioooo/Ingenio/main/slides/Fractional-Indeces-Y10.pptx";
-document.getElementById("pptViewer").src =
-    `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(url)}`;
-
-function loadPpt(url) {
-    document.getElementById("pptViewer").src =
-        `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(url)}`;
-}
