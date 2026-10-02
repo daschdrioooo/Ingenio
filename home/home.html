@@ -7,6 +7,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Geist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/lucide@0.460.0/dist/umd/lucide.min.js"></script>
         <link href="home.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+        <link href="../quiz/quiz.css">
     </head>
 
     <body>
@@ -21,7 +23,7 @@
                 <li data-panel="lessons">Lessons</li>
                 <li data-panel="practice-papers">Practice papers</li>
                 <li data-panel="practice-questions">Practice questions</li>
-                <li data-panel="ai-tutor">Ai Tutor</li>
+                <li data-panel="ai-tutor">AI Tutor</li>
             </ul>
             <footer>
                 <div id="profileMenu" class="profileMenu" role="menu" hidden>
@@ -314,7 +316,16 @@
                 <div class="tab-content" id="aqa">practice stuff</div>
                 <div class="tab-content" id="ocr">papers stuff</div>
             </div>
-            <div class="panel" id="practice-papers">practice papers stuff</div>
+            <div class="panel" id="practice-papers">
+                <div class="tabs">
+                    <button class="tab active" data-tab="quizGcse">GCSE</button>
+                    <button class="tab" data-tab="quizALevel">A-Level</button>
+                </div>
+                <div class="tab-content active" id="quizGcse">
+                    <div id="topicList"></div>
+                </div>
+                <div class="tab-content" id="quizALevel">a-level topics</div>
+            </div>
             <div class="panel" id="practice-questions">practice questions stuff</div>
             <div class="panel" id="ai-tutor">ai tutor stuff</div>
         </div>
@@ -327,11 +338,68 @@
         <div class="background" id="lessonsBackground">
             <iframe id="pptViewer"></iframe>
         </div>
-        <div class="background" id="practice-papersBackground"></div>
+        <div class="background" id="practice-papersBackground">
+            <div id="quizStatus" class="floaty" hidden>
+                <div class="status__top">
+                    <span id="quizName"></span>
+                    <span id="quizCount"></span>
+                </div>
+                <div class="status__bar"><div id="barFill"></div></div>
+            </div>
+            <button type="button" id="quizBack" class="floaty" hidden><i data-lucide="arrow-left"></i> Back</button>
+            <div class="desk" id="quizDesk" hidden>
+                <div class="paper">
+                    <div class="paper__scroll" id="paperScroll">
+                        <section id="questionView">
+                            <div class="q">
+                                <div class="q__number" id="qNumber"></div>
+                                <div class="q__body">
+                                    <p class="q__text" id="qText"></p>
+                                    <div id="answerArea"></div>
+                                    <div id="markArea"></div>
+                                    <p class="q__marks">[1 mark]</p>
+                                </div>
+                            </div>
+                        </section>
+                        <section id="resultsView" hidden>
+                            <p class="result__topic" id="resultsTopic"></p>
+                            <p class="result__score"><b id="scoreValue"></b><span id="scoreTotal"></span></p>
+                            <p class="result__msg" id="resultMsg"></p>
+                            <table class="examiner">
+                                <caption>For Examiner's Use (basically the mark scheme)</caption>
+                                <thead>
+                                    <tr><th>Question</th>Your paper</th><th>Mark</th></tr>
+                                </thead>
+                                <tbody id="examinerRows"></tbody>
+                                <tfoot>
+                                    <tr><td colspan="2" style="text-align:right;">TOTAL</td><td id="examinerTotal"></td></tr>
+                                </tfoot>
+                            </table>
+                        </section>
+                    </div>
+                    <div class="paper-foot">
+                        <span class="foot__hint" id="footHint"></span>
+                        <div class="foot__buttons">
+                            <button type="button" class="btn btn--soft" id="secondBtn" hidden></button>
+                            <button type="button" class="btn btn--main" id="mainBtn" disabled>
+                                <span id="mainBtnText">Check answer</span>
+                                <i data-lucide="arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="background" id="practice-questionsBackground"></div>
         <div class="background" id="ai-tutorBackground"></div>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
         <script src="../shared/supabase.js"></script>
         <script src="home.js"></script>
+        <script src="../quiz/engine.js"></script>
+        <script src="../quiz/generators/indices.js"></script>
+        <script src="../quiz/generators/surds.js"></script>
+        <script src="../quiz/quiz.js"></script>
     </body>
 </html>
