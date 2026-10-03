@@ -1,0 +1,76 @@
+[hidden] {
+    display:none !important;
+}
+
+#practice-papersBackground {
+    z-index:0;
+}
+
+#sideBar {
+    position:relative;
+    z-index:2;
+}
+
+#miniPill {
+    z-index:2;
+}
+
+#topicList {
+    margin-top:16px;
+    padding:16px;
+    border-radius:16px;
+    border:1px solid rgba(0,0,0,0.2);
+    max-height:calc(100vh - 160px);
+    overflow-y:auto;
+}
+
+.topicLink {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin:6px 0 6px 8px;
+    padding:8px 12px;
+    border-radius:8px;
+    color:#4f92ff;
+    font-weight:600;
+    text-decoration:none;
+    cursor:pointer;
+    transition:background 0.15s;
+}
+
+.topicLink:hover,
+.topicLink.selected {
+    background:#efefef;
+}
+
+.best {
+    flex-shrink:0;
+    padding:3px 9px;
+    border-radius:999px;
+    background:#f2f2f2;
+    color:rgba(0,0,0,0.5);
+    font-size:12px;
+    font-weight:600;
+    font-variant-numeric:tabular-nums;
+}
+
+.best--full {
+    background:rgba(34,160,80,0.12);
+    color:#15803d;
+}
+
+.floaty {
+    background:#fff;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+}
+
+#quizStatus {
+    position:absolute;
+    top:8px;
+    left:50%;
+    transform:translateX(-50%);
+    width:380px;
+    padding:12px 20px 14px;
+    border-radius:22px;
+}
