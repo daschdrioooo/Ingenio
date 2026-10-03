@@ -103,34 +103,6 @@ li:hover {
     color:rgba(0,0,0,0.5);
 }
 
-#settings {
-    display:grid;
-    place-items:center;
-    width:40px;
-    height:40px;
-    flex-shrink:0;
-    border:none;
-    border-radius:12px;
-    background:none;
-    color:#3f4651;
-    cursor:pointer;
-    transition:background 0.15s;
-}
-
-#settings:hover {
-    background:#f4f4f4;
-}
-
-#cog {
-    width:18px;
-    height:18px;
-    transition:transform 0.3s;
-}
-
-#settings:hover #cog {
-    transform:rotate(90deg);
-}
-
 .background::before {
     content:"";
     position:absolute;
@@ -164,29 +136,6 @@ footer {
     align-items: center;
     gap: 4px;
     padding-top: 12px;
-}
-
-#settings {
-    padding: 8px;
-    margin-right: 20px;
-    border-radius: 50%;
-    aspect-ratio: 1/1;
-    margin-top: 8px;
-    align-self: flex-start;
-    cursor: pointer;
-}
-
-#settings:hover {
-    background: #efefef;
-}
-
-#cog {
-    transition: transform 0.3s;
-    display: block;
-}
-
-#cog:hover {
-    transform: rotate(90deg);
 }
 
 #nav {
