@@ -1,66 +1,97 @@
-lucide.createIcons();
+const user={
+    id:null,
+    username:"",
+    email:"",
+    avatarUrl:null,
+    yearGroup:null,
+    level:"gcse",
+    subject:"maths",
+    examBoard:"Edexcel",
+};
 
-const sideBar = document.getElementById("sideBar");
-const items = document.querySelectorAll("#nav li");
-const panels = document.querySelectorAll(".panel");
+const $ = (id)=>document.getElementById(id);
+const drops=[...document.querySelectorAll(".drop")];
 
-items.forEach(li => {
-    li.addEventListener("click", () => {
-        items.forEach(i => i.classList.remove("selected"));
-        li.classList.add("selected");
-        panels.forEach(p => p.classList.remove("active"));
-        document.querySelectorAll(".background").forEach(background => {
-            background.classList.remove("open");
-        });
+function setDrop(drop,open) {
+    drop.querySelector("menu").hidden=!open;
+    drop.querySelector(".drop__btn").setAttribute("aria-expanded",open);
+}
 
-        const panel = document.getElementById(li.dataset.panel);
-        const background = document.getElementById(`${li.dataset.panel}Background`);
+function closeDrops() {
+    drops.forEach((drop)=>setDrop(drop,false));
+}
 
-        panel.classList.add("active");
-        background?.classList.add("open");
-        sideBar.classList.add("open");
+drops.forEach((drop)=>{
+    drop.querySelector(".drop__btn").addEventListener("click",(e)=>{
+        e.stopPropagation();
+        const wasOpen=!drop.querySelector(".menu").hidden;
+        closeDrops();
+        setDrop(drop,!wasOpen);
     });
 });
 
-document.querySelectorAll(".tabs").forEach(tabGroup => {
-    const tabs = tabGroup.querySelectorAll(".tab");
-    const contents = tabGroup.parentElement.querySelectorAll(".tab-content");
+document.addEventListener("click",(e)=>{
+    if (!e.target.closest(".menu")) closeDrops();
+});
 
-    tabs.forEach(tab => {
-        tab.addEventListener("click", () => {
-            tabs.forEach(t => t.classList.remove("active"));
-            tab.classList.add("active");
+document.addEventListener("keydown",(e)=>{
+    if (e.key==="Escape") closeDrops();
+});
 
-            contents.forEach(c => c.classList.remove("active"));
-            document.getElementById(tab.dataset.tab).classList.add("active");
-        });
+function renderBoard() {
+    $("boardLevel").textContent=user.level==="alevel"?"A-Level":"GCSE";
+    $("boardName").textContent=user.examBoard;
+    document.querySelectorAll("[data-board]").forEach((item)=>{
+        item.classList.toggle("selected",item.dataset.board===user.examBoard);
+    });
+}
+
+async function saveBoard() {
+    const {error} =await sb.from("profiles").update({exam_board:user.examBoard}).eq("id",user.id);
+    if (error) console.warn("couldn't save exam board:",error.message);
+}
+
+document.querySelectorAll("[data-board]").forEach((item)=>{
+    item.addEventListener("click",()=>{
+        user.examBoard=item.dataset.board;
+        renderBoard();
+        closeDrops();
+        saveBoard();
     });
 });
 
-document.getElementById("retractBtn").addEventListener("click", () => {
-    sideBar.classList.add("retracted");
-    document.body.classList.add("retracted");
+function renderAccount() {
+    const level=user.level==="alevel"?"A-level":"GCSE";
+    const subject=user.subject==="further"?"Further Maths":"Maths";
+    $("accountName").textContent=user.username;
+    $("menuName").textContent=`Year ${user.yearGroup} · ${level} ${subject}`;
+    $("menuEmail").textContent=user.email;
+    const avatar=$(avatar);
+    if (user.avatarUrl) {
+        const img=document.createElement("img");
+        img.src=user.avatarUrl;
+        img.alt="";
+        avatar.replaceChildren(img);
+    } else {
+        avatar.textContent=user.username.charAt(0).toUpperCase();
+    }
+}
+
+$("logOutBtn").addEventListener("click",async()=>{
+    await sb.auth.signOut();
+    go("hero");
 });
 
-document.getElementById("expandBtn").addEventListener("click", () => {
-    sideBar.classList.remove("retracted");
-    document.body.classList.remove("retracted");
-});
-
-document.querySelectorAll(".lessonLink").forEach(link => {
-    link.addEventListener("click", (e) => {
+document.querySelectorAll("#nav a").forEach((link)=>{
+    link.addEventListener("#click",(e)=>{
         e.preventDefault();
-
-        document.getElementById("pptViewer").src =
-            `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(link.dataset.ppt)}`;
-
-        sideBar.classList.add("retracted");
-        document.body.classList.add("retracted");
+        document.querySelectorAll("#nav a").forEach((a)=>a.classList.remove("active"));
+        link.classList.add("active");
     });
 });
 
-(async () => {
-    const { data } = await sb.auth.getSession();
+(async ()=>{
+    const {data}=await sb.auth.getSession();
     if (!data.session) {
         go("login");
         return;
@@ -70,54 +101,16 @@ document.querySelectorAll(".lessonLink").forEach(link => {
         go("setup");
         return;
     }
-    document.getElementById("username").textContent=profile.username;
-    document.getElementById("userEmail").textContent=data.session.user.email;
-    const level = profile.level==="alevel"?"A-level":"GCSE";
-    const subject = profile.subject==="further"?"Further Maths":"Maths";
-    document.getElementById("userMeta").textContent=`Year ${profile.year_group} | ${level} ${subject}`;
-    const avatarBox=document.getElementById("avatarBox");
-    if (profile.avatar_url) {
-        const img=document.createElement("img");
-        img.src=profile.avatar_url;
-        img.alt="";
-        avatarBox.replaceChildren(img);
-    } else {
-        avatarBox.textContent=profile.username.charAt(0).toUpperCase();
-    }
+    user.id=profile.id;
+    user.username=profile.username;
+    user.email=data.session.user.email;
+    user.avatarUrl=profile.avatar_url;
+    user.yearGroup=profile.year_group;
+    user.level=profile.level;
+    user.subject=profile.subject;
+    user.examBoard=profile.exam_board||"Edexcel"; // fallback to edexcel because basically eveyrone uses it anyway
+    renderBoard();
+    renderAccount();
+    lucide.createIcons();
+    document.body.classList.remove("checking");
 })();
-
-const userFoot = document.getElementById("userFoot");
-const profileMenu = document.getElementById("profileMenu");
-const logOutBtn = document.getElementById("logOutBtn");
-
-function setMenu(open) {
-    profileMenu.hidden=!open;
-    userFoot.classList.toggle("active",open);
-}
-
-userFoot.addEventListener("click",(e)=>{
-    e.stopPropagation();
-    setMenu(profileMenu.hidden);
-});
-
-userFoot.addEventListener("keydown",(e)=>{
-    if (e.key==="Enter" || e.key === "") {
-        e.preventDefault();
-        setMenu(profileMenu.hidden);
-    }
-});
-
-document.addEventListener("click",(e)=>{
-    if (!profileMenu.contains(e.target)) setMenu(false);
-});
-
-document.addEventListener("keydown",(e)=>{
-    if (e.key==="Escape") setMenu(false);
-});
-
-logOutBtn.addEventListener("click",async()=>{
-    logOutBtn.disabled=true;
-    logOutBtn.querySelector("span").textContent="Logging out...";
-    await sb.auth.signOut();
-    go("hero");
-});

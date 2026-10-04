@@ -2,475 +2,65 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Dashboard - Ingenio</title>
+        <link rel="preconnect" rel="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Geist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/lucide@0.460.0/dist/umd/lucide.min.js"></script>
-        <link href="home.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-        <link href="../quiz/quiz.css">
+        <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="home.css">
     </head>
-
-    <body>
-        <div id="sideBar">
-            <div id="nav">
-            <header>
-            <img id="logo" src="ingenio-logo-black.png" width="100" height="auto">
-            <button id="retractBtn"><i data-lucide="panel-left-close"></i></button>
-            </header>
-            <div></div>
-            <ul>
-                <li data-panel="lessons">Lessons</li>
-                <li data-panel="practice-papers">Practice papers</li>
-                <li data-panel="practice-questions">Practice questions</li>
-                <li data-panel="ai-tutor">AI Tutor</li>
-            </ul>
-            <footer>
-                <div id="profileMenu" class="profileMenu" role="menu" hidden>
-                    <div class="profile-menu__email" id="userEmail"></div>
-                    <button type="button" class="profile-menu__item" role="menuitem" id="menuSettings"><i data-lucide="settings"></i> Settings</button>
-                    <button type="button" class="profile-menu__item profile-menu__item--danger" role="menuitem" id="logOutBtn"><i data-lucide="log-out"></i> <span>Log out</span></button>
-                </div>
-                <div id="userFoot" role="button" tabindex="0">
-                    <div class="avatar" id="avatarBox"><i data-lucide="user"></i></div>
-                    <div class="user-info">
-                        <div class="user-name" id="username"></div>
-                        <div class="user-meta" id="userMeta"></div>
+    <body class="checking">
+        <div class="app">
+            <aside class="side">
+                <a href="#" class="side__logo">
+                    <img src="../images/ingenio-logo-white.png" alt="Ingenio" width="1920" height="410">
+                </a>
+                <ul class="nav" id="nav">
+                    <li><a href="#" class="active" data-page="home"><i data-lucide="house"></i> Home</a></li>
+                    <li><a href="#" data-page="lessons"><i data-lucide="book-open"></i> Lessons</a></li>
+                    <li><a href="#" data-page="papers"><i data-lucide="file-text"></i> Practice papers</a></li>
+                    <li><a href="#" data-page="questions"><i data-lucide="pencil-line"></i> Practice questions</a></li>
+                    <li><a href="#" data-page="tutor"><i data-lucide="message-circle"></i> AI tutor</a></li>
+                </ul>
+            </aside>
+            <header class="topbar">
+                <div class="drop" id="boardDrop">
+                    <button type="button" class="drop__btn" aria-haspopup="menu" aria-expanded="false"> <!-- trying accessibility feats through aria because if we want to release this fr we should have it -->
+                        <span><span class="board__level" id="boardLevel"><span id="boardName"></span></span>
+                        <i data-lucide="chevron-down"></i>
+                    </button>
+                    <div class="menu" hidden>
+                        <button type="button" class="menu__item" data-board="Edexcel">Edexcel <i data-lucide="check" class="tick"></i></button>
+                        <button type="button" class="menu__item" data-board="AQA">AQA <i data-lucide="check" class="tick"></i></button>
+                        <button type="button" class="menu__item" data-board="OCR">OCR <i data-lucide="check" class="tick"></i></button>
                     </div>
                 </div>
-            </footer>
-            </div>
-            <div class="panel" id="lessons">
-                <div class="tabs">
-                    <button class="tab" data-tab="edexcel">Edexcel</button>
-                    <button class="tab" data-tab="aqa">AQA</button>
-                    <button class="tab" data-tab="ocr">OCR</button>
-                </div>
-
-                <div class="tab-content" id="edexcel">
-                    <div id="edexcelLessons">
-                        <details class="edexcelLessons" id="gcseHigherFurther">
-                            <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Y10 (GCSE + FM)</summary>
-                            <details>
-                                <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Y10 Autumn 1</summary>
-                                <details>
-                                    <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Working With Indices</summary>
-                                    <a class="lessonLink" href="#gcse_fractional_indices_lesson" data-ppt="">Fractional Indices</a>
-                                    <a class="lessonLink" href="#gcse_negative_indices_lesson" data-ppt="">Negative Indices</a>
-                                    <a class="lessonLink" href="#gcse_numerical_laws_of_indices_lesson" data-ppt="">Numerical Laws of Indices</a>
-                                    <a class="lessonLink" href="#gcse_negative_powers_as_reciprocals_lesson" data-ppt="">Negative Powers as Reciprocals</a>
-                                </details>
-                                <details>
-                                    <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Manipulating Surds</summary>
-                                    <a class="lessonLink" href="#gcse_introduction_to_surds_lesson" data-ppt="">Introduction To Surds</a>
-                                    <a class="lessonLink" href="#gcse_simplifying_surds_lesson" data-ppt="">Simplifying Surds</a>
-                                    <a class="lessonLink" href="#gcse_rationalising_single_surd_term_denominators_lesson" data-ppt="">Rationalising Single Surd Term Denominators</a>
-                                    <a class="lessonLink" href="#gcse_rationalising_surds_lesson" data-ppt="">Rationalising Surds</a>
-                                    <a class="lessonLink" href="#gcse_rationalising_binomial_surd_denominators_lesson" data-ppt="">Rationalising Binomial Surd Denominators</a>
-                                    <a class="lessonLink" href="#gcse_rationalising_surds_with_binomial_numerator_lesson" data-ppt="">Rationalising Surds with Binomial Numerators</a>
-                                    <a class="lessonLink" href="#gcse_adding_and_subtracting_surds-with_simplifying_lesson" data-ppt="">Adding and Subtracting Surds with Simplifying</a>
-                                    <a class="lessonLink" href="#gcse_multiplying_and_dividing_surds_with_simplifying_lesson" data-ppt="">Multiplying and Dividing Surds with Simplifying</a>
-                                </details>
-                                <details>
-                                    <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Manipulating Formulae</summary>
-                                    <a class="lessonLink" href="#gcse_changing_the_subject_one_step_lesson" data-ppt="">Changing the Subject - One Step</a>
-                                    <a class="lessonLink" href="#gcse_changing_the_subject_multi_step_four_operations_lesson" data-ppt="">Changing the Subject - Multi-Step (Four Operations)</a>
-                                    <a class="lessonLink" href="#gcse_changing_the_subject_where_the_subject_appears_multiple_times_without_fractions_lesson" data-ppt="">Changing the Subject Where the Subject Appears Multiple Times (Without Fractions)</a>
-                                    <a class="lessonLink" href="#gcse_changing_the_subject_where_the_subject_appears_multiple_times_with_fractions_lesson" data-ppt="">Changing the Subject Where the Subject Appears Multiple Times (With Fractions)</a>
-                                </details>
-                                <details>
-                                    <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Straight Line Graphs, y=mx+c</summary>
-                                    <a class="lessonLink" href="#gcse_equations_of_simple_lines_lesson" data-ppt="">Equations of Simple Lines</a>
-                                    <a class="lessonLink" href="#gcse_understanding_y=mx+c_lesson" data-ppt="">Understanding y=mx+c</a>
-                                    <a class="lessonLink" href="#gcse_applying_y=mx+c_lesson" data-ppt="">Applying y=mx+c</a>
-                                    <a class="lessonLink" href="#gcse_finding_the_equation_of_a_line_given_the_gradient_and_two_points_lesson" data-ppt="">Finding the Equation of a Line Given the Gradient and a Point</a>
-                                    <a class="lessonLink" href="#gcse_finding_the_equation_of_a_line_given_two_points_lesson" data-ppt="">Finding the Equation of a Line Given Two Points</a>
-                                    <a class="lessonLink" href="#gcse_midpoint_of_a_line_segment_by_inspection_lesson" data-ppt="">Midpoint of a Line Segment by Inspection</a>
-                                    <a class="lessonLink" href="#gcse_midpoint_of_a_line_segment_using_the_formula_lesson" data-ppt="">Midpoint of a Line Segment Using the Formula</a>
-                                    <a class="lessonLink" href="#gcse_problem_solving_using_the_midpoint_of_a_line_segment_lesson" data-ppt="">Problem-Solving Using the Midpoint of a Line Segment</a>
-                                </details>
-                                <details>
-                                    <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Inequalities</summary>
-                                    <a class="lessonLink" href="#gcse_linear_inequalities_lesson" data-ppt="">Linear Inequalities</a>
-                                </details>
-                            </details>
-                            <details>
-                                <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Y10 Autumn 2</summary>
-                                <details>
-                                    <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Circle Theorems and Proofs</summary>
-                                    <a class="lessonLink" href="#gcse_circle_theorems_and_proofs_lesson" data-ppt="">Circle Theorems and Proofs</a>
-                                </details>
-                                <details>
-                                    <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Advanced Trigonometry</summary>
-                                    <a class="lessonLink" href="#gcse_introducing_trigonometry_lesson" data-ppt="">Introducing Trigonometry</a>
-                                    <a class="lessonLink" href="#gcse_right-angled_trigonometry_finding_lengths_lesson" data-ppt="">Right-Angled Trigonometry - Finding Lengths</a>
-                                    <a class="lessonLink" href="#gcse_right-angled_trigonometry_finding_angles_lesson" data-ppt="">Right-Angled Trigonometry - Finding Angles</a>
-                                    <a class="lessonLink" href="#gcse_right-angled_trigonometry_applications_lesson" data-ppt="">Right-Angled Trigonometry - Applications</a>
-                                    <a class="lessonLink" href="#gcse_bearings_with_right-angled_trigonometry_and_pythagoras_lesson" data-ppt="">Bearings With Right-Angled Trigonometry and Pythagoras</a>
-                                    <a class="lessonLink" href="#gcse_area_of_non-right-angled_triangles_lesson" data-ppt="">Area of Non-Right-Angled Triangles</a>
-                                    <a class="lessonLink" href="#gcse_sine_and_cosine_rules_lesson" data-ppt="">Sine and Cosine Rules</a>
-                                    <a class="lessonLink" href="#gcse_right_angled_trigonometry-in_3d_shapes_lesson" data-ppt="">Right-Angled Trigonometry in 3D Shapes</a>
-                                </details>
-                                <details>
-                                    <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Sampling and Estimating</summary>
-                                    <a class="lessonLink" href="#gcse_random_and_non-random_sampling_lesson" data-ppt="">Random and Non-Random Sampling</a>
-                                    <a class="lessonLink" href="#gcse_stratified_sampling_lesson" data-ppt="">Stratified Sampling</a>
-                                </details>
-                                <details>
-                                    <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Histograms</summary>
-                                    <a class="lessonLink" href="#gcse_histograms_lesson" data-ppt="">Histograms</a>
-                                </details>
-                            </details>
-                            <details>
-                                <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Y10 Spring 1</summary>
-                                <details>
-                                    <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Direct and Inverse Proportion</summary>
-                                    <a class="lessonLink" href="#gcse_algebraic_direct_proportion_lesson" data-ppt="">Algebraic Direct Proportion</a>
-                                    <a class="lessonLink" href="#gcse_algebraic_inverse_proportion_lesson" data-ppt="">Algebraic Inverse Proportion</a>
-                                    <a class="lessonLink" href="#gcse_algebraic_proportion_problems_lesson" data-ppt="">Algebraic Proportion Problems</a>
-                                </details>
-                                <details>
-                                    <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Simultaneous Equations (Linear and Quadratic)</summary>
-                                    <a class="lessonLink" href="#gcse_solving_quadratics_by_factorising_lesson" data-ppt="">Solving Quadratics by Factorising</a>
-                                    <a class="lessonLink" href="#gcse_quadratic_formula_lesson" data-ppt="">Quadratic Formula</a>
-                                    <a class="lessonLink" href="#gcse_forming_and_solving_quadratic_equations_lesson" data-ppt="">Forming and Solving Quadratic Equations</a>
-                                    <a class="lessonLink" href="#gcse_solving_quadratics_by_use_of_the_quadratic_formula_lesson" data-ppt="">Solving Quadratics by Use of the Quadratic Formula</a>
-                                    <a class="lessonLink" href="#gcse_solving_simultaneous_equations_by_substitution_lesson" data-ppt="">Solving Simultaneous Equations by Substitution</a>
-                                </details>
-                                <details>
-                                    <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Curved Graphs</summary>
-                                    <a class="lessonLink" href="#gcse_plotting_quadratic_graphs_lesson" data-ppt="">Plotting Quadratic Graphs</a>
-                                    <a class="lessonLink" href="#gcse_features_of_and_sketching_quadratic_graphs_lesson" data-ppt="">Features of and Sketching Quadratic Graphs</a>
-                                    <a class="lessonLink" href="#gcse_completing_the_square_lesson" data-ppt="">Completing the Square</a>
-                                    <a class="lessonLink" href="#gcse_modelling_with_quadratics_lesson" data-ppt="">Modelling With Quadratics</a>
-                                    <a class="lessonLink" href="#gcse_the_unit_circle_and_trigonometric_graphs_in_degrees_lesson" data-ppt="">The Unit Circle & Trigonometric Graphs in Degrees</a>
-                                    <a class="lessonLink" href="#gcse_graphs_of_circles_centred_at_the_origin_lesson" data-ppt="">Graphs of Circles Centred at the Origin</a>
-                                    <a class="lessonLink" href="#gcse_determining_constants_in_the_exponential_function_y=ka^x_lesson" data-ppt="">Determining Constants in the Exponential Function y=ka^x</a>
-                                </details>
-                                <details>
-                                    <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Vectors</summary>
-                                    <a class="lessonLink" href="#gcse_vectors_using_variables_lesson" data-ppt="">Vectors Using Variables</a>
-                                    <a class="lessonLink" href="#gcse_parallel_lines_and_straight_line_proofs_using_vectors_lesson" data-ppt="">Parallel Lines and Straight Line Proofs using Vectors</a>
-                                </details>
-                            </details>
-                            <details>
-                                <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Y10 Spring 2</summary>
-                                <details>
-                                    <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Volume and Surface Area of 3D Shapes</summary>
-                                    <a class="lessonLink" href="#gcse_volumes_of_cubes_and_cuboids_lesson" data-ppt="">Volumes of Cubes and Cuboids</a>
-                                    <a class="lessonLink" href="#gcse_volume_of_a_prism_lesson" data-ppt="">Volume of a Prism</a>
-                                    <a class="lessonLink" href="#gcse_surface_area_of_cuboids_and_prisms_lesson" data-ppt="">Surface Area of Cuboids and Prisms</a>
-                                    <a class="lessonLink" href="#gcse_volume_and_surface_area_of_cylinders_lesson" data-ppt="">Volume and Surface Area of Cylinders</a>
-                                    <a class="lessonLink" href="#gcse_volume_of_a_pyramid_cone_or_sphere_lesson" data-ppt="">Volume of a Pyramid, Cone or Sphere</a>
-                                    <a class="lessonLink" href="#gcse_surface_area_of_a_pyramid_cone_or_sphere_lesson" data-ppt="">Surface Area of a Pyramid, Cone or Sphere</a>
-                                    <a class="lessonLink" href="#gcse_volume_and_surface_area_of_more_complex_compound_3d_shapes_lesson" data-ppt="">Volume and Surface Area of more Complex Compound 3D Shapes</a>
-                                    <a class="lessonLink" href="#gcse_volume_and_surface_area_of_frustums_lesson" data-ppt="">Volume and Surface Area of Frustums</a>
-                                </details>
-                                <details>
-                                    <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Similar Shapes (Area and Volume sf)</summary>
-                                    <a class="lessonLink" href="#gcse_similarity_lesson" data-ppt="">Similarity</a>
-                                </details>
-                                <details>
-                                    <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Measures and Bounds</summary>
-                                    <a class="lessonLink" href="#gcse_bounds_lesson" data-ppt="">Bounds</a>
-                                    <a class="lessonLink" href="#gcse_error_intervals_lesson" data-ppt="">Error Intervals (including truncation)</a>
-                                    <a class="lessonLink" href="#gcse_calculations_with_bounds_lesson" data-ppt="">Calculations With Bounds</a>
-                                </details>
-                                <details>
-                                    <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Congruency Proofs</summary>
-                                    <a class="lessonLink" href="#gcse_congruent_triangle_proofs_lesson" data-ppt="">Congruent Triangle Proofs</a>
-                                </details>
-                            </details>
-                            <details>
-                                <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Y10 Summer 1</summary>
-                                <details>
-                                    <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Algebraic Fractions</summary>
-                                    <a class="lessonLink" href="#gcse_form_simple_expressions_lesson" data-ppt="">Form Simple Expressions</a>
-                                    <a class="lessonLink" href="#gcse_form_and_use_simple_formulae_lesson" data-ppt="">Form and Use Simple Formulae</a>
-                                    <a class="lessonLink" href="#gcse_simplifying_algebraic_fractions_lesson" data-ppt="">Simplifying Algebraic Fractions</a>
-                                </details>
-                                <details>
-                                    <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Advanced Sequences</summary>
-                                    <a class="lessonLink" href="#gcse_using_the_linear_nth_term_rule_lesson" data-ppt="">Using the Linear nth Term Rule</a>
-                                    <a class="lessonLink" href="#gcse_quadratic_sequences_lesson" data-ppt="">Quadratic Sequences</a>
-                                    <a class="lessonLink" href="#gcse_finding_the_nth_term_of_a_simple_quadratic_sequence_lesson" data-ppt="">Finding the nth term of a Simple Quadratic Sequence</a>
-                                    <a class="lessonLink" href="#gcse_finding_the_nth_term_of_a_complex_quadratic_sequence_lesson" data-ppt="">Finding the nth term of a Complex Quadratic Sequence</a>
-                                    <a class="lessonLink" href="#gcse_arithmetic_sequences_including_nth_term_rule_lesson" data-ppt="">Arithmetic Sequences Including nth Term Rule</a>
-                                    <a class="lessonLink" href="#gcse_geometric_sequences_including_nth_term_rule_lesson" data-ppt="">Geometric Sequence Including nth Term Rule</a>
-                                    <a class="lessonLink" href="#gcse_sequences_in_greater_depth-algebraic_representations_and_harder_sequences_lesson" data-ppt="">Sequences in Greater Depth - Algebraic Representations and Harder Sequences</a>
-                                </details>
-                            </details>
-                            <details>
-                                <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Y10 Summer 2</summary>
-                                <details>
-                                    <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Quadratic Inequalities</summary>
-                                    <a class="lessonLink" href="#gcse_quadratic_inequalities_lesson" data-ppt="">Quadratic Inequalities</a>
-                                </details>
-                                <details>
-                                    <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Introduction to Functions</summary>
-                                    <a class="lessonLink" href="#gcse_function_machines_lesson" data-ppt="">Function Machines</a>
-                                    <a class="lessonLink" href="#gcse_piecewise_functions_lesson" data-ppt="">Piecewise Functions</a>
-                                </details>
-                                <details>
-                                    <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Iteration</summary>
-                                    <a class="lessonLink" href="#gcse_iteration_lesson" data-ppt="">Iteration</a>
-                                    <a class="lessonLink" href="#gcse_change_of_sign_and_fixed_point_iteration_lesson" data-ppt="">Change of Sign and Fixed Point Iteration</a>
-                                </details>
-                            </details>
-                        </details>
-
-                        <details class="edexcelLessons" id="gcseHigher">
-                            <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Y10 (GCSE Higher)</summary>
-                            <details>
-                                <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Y10 Autumn 1</summary>
-                                <details>
-                                    <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Surds</summary>
-                                    <a class="lessonLink" href="#gcse_introduction_to_surds_lesson" data-ppt="">Introduction to Surds</a>
-                                    <a class="lessonLink" href="#gcse_simplifying_surds_lesson" data-ppt="">Simplifying Surds</a>
-                                    <a class="lessonLink" href="#gcse_multiplying_and_dividing_surds_with_simplifying_lesson" data-ppt="">Multiplying and Dividing Surds with Simplifying</a>
-                                    <a class="lessonLink" href="#gcse_adding_and_subtracting_surds_with_simplifying_lesson" data-ppt="">Adding and Subtracting Surds with Simplifying</a>
-                                    <a class="lessonLink" href="#gcse_rationalising_single_surd_term_denominators_lesson" data-ppt="">Rationalising Single Surd Term Denominators</a>
-                                    <a class="lessonLink" href="#gcse_rationalising_binomial_surd_denominators_lesson" data-ppt="">Rationalising Binomial Surd Denominators</a>
-                                    <a class="lessonLink" href="#gcse_rationalising_surds_with_a_binomial_numerator_lesson" data-ppt="">Rationalising Surds with a Binomial Numerator</a>
-                                    <a class="lessonLink" href="#gcse_applications_of_rationalising_surds_lesson" data-ppt="">Applications of Rationalising Surds</a>
-                                </details>
-                                <details>
-                                    <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Indices</summary>
-                                    <a class="lessonLink" href="#gcse_numerical_laws_of_indices_lesson" data-ppt="">Numerical Laws of Indices</a>
-                                    <a class="lessonLink" href="#gcse_order_of_operations_lesson" data-ppt="">Order of Operations</a>
-                                    <a class="lessonLink" href="#gcse_negative_indices_lesson" data-ppt="">Negative Indices</a>
-                                    <a class="lessonLink" href="#gcse_fractional_indices_lesson" data-ppt="https://raw.githubusercontent.com/daschdrioooo/Ingenio/main/slides/Fractional-Indices-Y10.pptx">Fractional Indices</a>
-                                    <a class="lessonLink" href="#gcse_negative_powers_as_reciprocals_lesson" data-ppt="">Negative Powers as Reciprocals</a>
-                                    <a class="lessonLink" href="#gcse_midpoint_of_two_numbers_lesson" data-ppt="">Midpoint of Two Numbers</a>
-                                </details>
-                                <details>
-                                    <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Changing the Subject</summary>
-                                    <a class="lessonLink" href="#gcse_changing_the_subject_one_step_lesson" data-ppt="">Changing the Subject (One Step)</a>
-                                    <a class="lessonLink" href="#gcse_changing_the_subject_multi_step_four_operations_lesson" data-ppt="">Changing the Subject (Multi-Step - Four Operations)</a>
-                                    <a class="lessonLink" href="#gcse_changing_the_subject_where_the_subject_appears_multiple_times_without_fractions_lesson" data-ppt="">Changing the Subject Where the Subject Appears Multiple Times (Without Fractions)</a>
-                                    <a class="lessonLink" href="#gcse_changing_the_subject_where_the_subject_appears_multiple_times_with_fractions_lesson" data-ppt="">Changing the Subject Where the Subject Appears Multiple Times (With Fractions)</a>
-                                </details>
-                                <details>
-                                    <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Linear Graphs</summary>
-                                    <a class="lessonLink" href="#gcse_equations_of_simple_lines_lesson" data-ppt="">Equations Of Simple Lines</a>
-                                    <a class="lessonLink" href="#gcse_gradient_of_a_line_from_given_points_lesson" data-ppt="">Gradient of a Line From Given Points</a>
-                                    <a class="lessonLink" href="#gcse_gradient_of_a_line_on_axes_lesson" data-ppt="">Gradient of a Line on Axes</a>
-                                    <a class="lessonLink" href="#gcse_gradient_of_a_line_segment_lesson" data-ppt="">Gradient of a Line Segment</a>
-                                    <a class="lessonLink" href="#gcse_understanding_y=mx+c_lesson" data-ppt="">Understanding y=mx+c</a>
-                                    <a class="lessonLink" href="#gcse_applying_y=mx+c_lesson" data-ppt="">Applying y=mx+c</a>
-                                    <a class="lessonLink" href="#gcse_plotting_straight_line_graphs_lesson" data-ppt="">Plotting Straight Line Graphs</a>
-                                    <a class="lessonLink" href="#gcse_finding_the_equation_of_a_line_given_the_gradient_and_a_point_lesson" data-ppt="">Finding the Equation of a Line Given the Gradient and a Point</a>
-                                    <a class="lessonLink" href="#gcse_finding_the_equation_of_a_line_given_two_points_lesson" data-ppt="">Finding the Equation of a Line Given Two Points</a>
-                                    <a class="lessonLink" href="#gcse_midpoint_of_a_line_segment_by_inspection_lesson" data-ppt="">Midpoint of a Line Segment by Inspection</a>
-                                    <a class="lessonLink" href="#gcse_midpoint_of_a_line_segment_using_the_formula_lesson" data-ppt="">Midpoint of a Line Segment Using the Formula</a>
-                                    <a class="lessonLink" href="#gcse_problem_solving_using_the_midpoint_of_a_line_segment_lesson" data-ppt="">Problem Solving Using the Midpoint of a Line Segment</a>
-                                </details>
-                            </details>
-                            <details>
-                                <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Y10 Autumn 2</summary>
-                                <details>
-                                    <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Inequalities: Shading Regions</summary>
-                                    <a class="lessonLink" href="#gcse_solving_one-step_linear_equations_lesson" data-ppt="">Solving One-Step Linear Equations</a>
-                                    <a class="lessonLink" href="#gcse_solving_linear_equations_by_balancing_lesson" data-ppt="">Solving Linear Equations by Balancing</a>
-                                    <a class="lessonLink" href="#gcse_solutions_to_algebraic_equations_lesson" data-ppt="">Solutions to Algebraic Equations</a>
-                                    <a class="lessonLink" href="#gcse_solving_linear_equations_with_unknowns_on_both_sides_lesson" data-ppt="">Solving Linear Equations with Unknowns on Both Sides</a>
-                                    <a class="lessonLink" href="#gcse_solving_linear_equations_with_fractions_lesson" data-ppt="">Solving Linear Equations with Fractions</a>
-                                    <a class="lessonLink" href="#gcse_solving_linear_equations_with_fractions_variables_on_both_sides_lesson" data-ppt="">Solving Linear Equations with Fractions (Variables on Both Sides)</a>
-                                    <a class="lessonLink" href="#gcse_using_balance_models_to_understand_algebraic_equality_lesson" data-ppt="">Using Balance Models to Understand Algebraic Equality</a>
-                                </details>
-                                <details>
-                                    <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Angles and Circle Theorems</summary>
-                                    <a class="lessonLink" href="#gcse_angles_on_parallel_lines_lesson" data-ppt="">Angles on Parallel Lines</a>
-                                    <a class="lessonLink" href="#gcse_form_and_solve_linear_equations_using_angle_facts_lesson" data-ppt="">Form and Solve Linear Equations Using Angle Facts</a>
-                                    <a class="lessonLink" href="#gcse_interior_angles_of_polygons_lesson" data-ppt="">Interior Angles of Polygons</a>
-                                    <a class="lessonLink" href="#gcse_exterior_angles_of_polygons_lesson" data-ppt="">Exterior Angles of Polygons</a>
-                                </details>
-                                <details>
-                                    <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Fractions</summary>
-                                    <a class="lessonLink" href="#gcse_adding_and_subtracting_fractions_of_a_common_denominator_lesson" data-ppt="">Adding and Subtracting Fractions of a Common Denominator</a>
-                                    <a class="lessonLink" href="#gcse_converting_from_a_recurring_decimal_to_a_fraction_lesson" data-ppt="">Converting From a Recurring Decimal to a Fraction</a>
-                                    <a class="lessonLink" href="#gcse_dividing_mixed_numbers_lesson" data-ppt="">Dividing Mixed Numbers</a>
-                                    <a class="lessonLink" href="#gcse_dividing_proper_and_improper_fractions_lesson" data-ppt="">Dividing Proper and Improper Fractions</a>
-                                    <a class="lessonLink" href="#gcse_dividing_fractions_by_integers_lesson" data-ppt="">Dividing Fractions by Integers</a>
-                                    <a class="lessonLink" href="#gcse_multiplying_mixed_numbers_lesson" data-ppt="">Multiplying Mixed Numbers</a>
-                                    <a class="lessonLink" href="#gcse_multiplying_proper_fractions_lesson" data-ppt="">Multiplying Proper Fractions</a>
-                                    <a class="lessonLink" href="#gcse_adding_and_subtracting_mixed_numbers_with_different_denominators_lesson" data-ppt="">Adding and Subtracting Mixed Numbers with Different Denominators</a>
-                                    <a class="lessonLink" href="#gcse_mixed_numbers_and_improper_fractions_lesson" data-ppt="">Mixed Numbers and Improper Fractions</a>
-                                    <a class="lessonLink" href="#gcse_original_value_problems_with_fractions_lesson" data-ppt="">Original Value Problems with Fractions</a>
-                                    <a class="lessonLink" href="#gcse_midpoint_of_two_numbers_lesson" data-ppt="">Midpoint of Two Numbers</a>
-                                    <a class="lessonLink" href="#gcse_compare_and_order_fractions_greater_than_one_lesson" data-ppt="">Compare and Order Fractions Greater than One</a>
-                                </details>
-                                <details>
-                                    <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Trigonometry Of Right-Angled Triangles</summary>
-                                    <a class="lessonLink" href="#gcse_pythagoras_theorem_in_2d_lesson" data-ppt="">Pythagoras' Theorem in 2D</a>
-                                    <a class="lessonLink" href="#gcse_introducing_trigonometry_lesson" data-ppt="">Introducing Trigonometry</a>
-                                    <a class="lessonLink" href="#gcse_right-angled_trigonometry_finding_lengths_lesson" data-ppt="">Right-Angled Trigonometry - Finding Lengths</a>
-                                    <a class="lessonLink" href="#gcse_right-angled_trigonometry_finding_angles_lesson" data-ppt="">Right-Angled Trigonometry - Finding Angles</a>
-                                    <a class="lessonLink" href="#gcse_right-angled_trigonometry_applications_lesson" data-ppt="">Right-Angled Trigonometry - Applications</a>
-                                    <a class="lessonLink" href="#gcse_bearings_with_right-angled_trigonometry_and_pythagoras_lesson" data-ppt="">Bearings with Right-Angled Trigonometry and Pythagoras</a>
-                                    <a class="lessonLink" href="#gcse_distance_between_two_points_given_coordinates_lesson" data-ppt="">Distance Between Two Points Given Coordinates</a>
-                                    <a class="lessonLink" href="#gcse_pythagoras_theorem_in_3d_lesson" data-ppt="">Pythagoras' Theorem in 3D</a>
-                                    <a class="lessonLink" href="#gcse_right-angled_trigonometry_in_3d_shapes_lesson" data-ppt="">Right-Angled Trigonometry in 3D Shapes</a>
-                                </details>
-                                <details>
-                                    <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Advanced Trigonometry 1</summary>
-                                    <a class="lessonLink" href="#gcse_area_of_non-right-angled_triangles_lesson" data-ppt="">Area of Non-Right-Angled Triangles</a>
-                                    <a class="lessonLink" href="#gcse_sine_and_cosine_rules_lesson" data-ppt="">Sine and Cosine Rules</a>
-                                </details>
-                            </details>
-                            <details>
-                                <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Y10 Spring 1</summary>
-                                <details>
-                                    <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Sampling</summary>
-                                    <a class="lessonLink" href="#gcse_random_and_non-random_sampling_lesson" data-ppt="">Random and Non-Random Sampling</a>
-                                    <a class="lessonLink" href="#gcse_stratified_sampling_lesson" data-ppt="">Stratified Sampling</a>
-                                </details>
-                                <details>
-                                    <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Grouped Data</summary>
-                                    <a class="lessonLink" href="#gcse_histograms_lesson" data-ppt="">Histograms</a>
-                                    <a class="lessonLink" href="#gcse_mean_and_frequency_tables_lesson" data-ppt="">Mean and Frequency Tables</a>
-                                    <a class="lessonLink" href="#gcse_mean_from_ungrouped_frequency_tables_lesson" data-ppt="">Mean From Ungrouped Frequency Tables</a>
-                                </details>
-                                <details>
-                                    <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Ratio and Proportion</summary>
-                                    <a class="lessonLink" href="#gcse_working_with_ratio_lesson" data-ppt="">Working with Ratio</a>
-                                    <a class="lessonLink" href="#gcse_finding_a_quantity_within_a_ratio_lesson" data-ppt="">Finding a Quantity Within a Ratio</a>
-                                    <a class="lessonLink" href="#gcse_combining_ratios_and_proportions_into_a_single_ratio_lesson" data-ppt="">Combining Ratios and Proportions into a Single Ratio</a>
-                                    <a class="lessonLink" href="#gcse_algebraic_direct_proportion_lesson" data-ppt="">Algebraic Direct Proportion</a>
-                                    <a class="lessonLink" href="#gcse_algebraic_inverse_proportion_lesson" data-ppt="">Algebraic Inverse Proportion</a>
-                                    <a class="lessonLink" href="#gcse_algebraic_proportion_problems_lesson" data-ppt="">Algebraic Proportion Problems</a>
-                                    <a class="lessonLink" href="#gcse__lesson" data-ppt="">Algebraic Techniques For Ratio Problems</a>
-                                </details>
-                                <details>
-                                    <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Quadratic Simultaneous Equations</summary>
-                                    <a class="lessonLink" href="#gcse__lesson" data-ppt=""></a>
-                                </details>
-                                <details>
-                                    <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Curved Graphs</summary>
-                                    <a class="lessonLink" href="#gcse__lesson" data-ppt=""></a>
-                                </details>
-                            </details>
-                            <details>
-                                <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Y10 Spring 2</summary>
-                            </details>
-                            <details>
-                                <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Y10 Summer 1</summary>
-                            </details>
-                            <details>
-                                <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Y10 Summer 2</summary>
-                            </details>
-                        </details>
-
-                        <details class="edexcelLessons" id="gcseFoundation">
-                            <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Y10 (GCSE Foundation)</summary>
-                            <details>
-                                <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Y10 Autumn 1</summary>
-                            </details>
-                            <details>
-                                <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Y10 Autumn 2</summary>
-                            </details>
-                            <details>
-                                <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Y10 Spring 1</summary>
-                            </details>
-                            <details>
-                                <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Y10 Spring 2</summary>
-                            </details>
-                            <details>
-                                <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Y10 Summer 1</summary>
-                            </details>
-                            <details>
-                                <summary><span class="chevron"><i data-lucide="chevron-right"></i></span>Y10 Summer 2</summary>
-                            </details>
-                        </details>
-                    </div>
-                </div>
-                <div class="tab-content" id="aqa">practice stuff</div>
-                <div class="tab-content" id="ocr">papers stuff</div>
-            </div>
-            <div class="panel" id="practice-papers">
-                <div class="tabs">
-                    <button class="tab active" data-tab="quizGcse">GCSE</button>
-                    <button class="tab" data-tab="quizALevel">A-Level</button>
-                </div>
-                <div class="tab-content active" id="quizGcse">
-                    <div id="topicList"></div>
-                </div>
-                <div class="tab-content" id="quizALevel">a-level topics</div>
-            </div>
-            <div class="panel" id="practice-questions">practice questions stuff</div>
-            <div class="panel" id="ai-tutor">ai tutor stuff</div>
-        </div>
-        
-        <div id="miniPill">
-            <img id="miniLogo" src="ingenio-logo-black.png" width="auto" height="30">
-            <button id="expandBtn"><i data-lucide="chevrons-right"></i></button>
-        </div>
-
-        <div class="background" id="lessonsBackground">
-            <iframe id="pptViewer"></iframe>
-        </div>
-        <div class="background" id="practice-papersBackground">
-            <div id="quizStatus" class="floaty" hidden>
-                <div class="status__top">
-                    <span id="quizName"></span>
-                    <span id="quizCount"></span>
-                </div>
-                <div class="status__bar"><div id="barFill"></div></div>
-            </div>
-            <button type="button" id="quizBack" class="floaty" hidden><i data-lucide="arrow-left"></i> Back</button>
-            <div class="desk" id="quizDesk" hidden>
-                <div class="paper">
-                    <div class="paper__scroll" id="paperScroll">
-                        <section id="questionView">
-                            <div class="q">
-                                <div class="q__number" id="qNumber"></div>
-                                <div class="q__body">
-                                    <p class="q__text" id="qText"></p>
-                                    <div id="answerArea"></div>
-                                    <div id="markArea"></div>
-                                    <p class="q__marks">[1 mark]</p>
-                                </div>
-                            </div>
-                        </section>
-                        <section id="resultsView" hidden>
-                            <p class="result__topic" id="resultsTopic"></p>
-                            <p class="result__score"><b id="scoreValue"></b><span id="scoreTotal"></span></p>
-                            <p class="result__msg" id="resultMsg"></p>
-                            <table class="examiner">
-                                <caption>For Examiner's Use (basically the mark scheme)</caption>
-                                <thead>
-                                    <tr><th>Question</th>Your paper</th><th>Mark</th></tr>
-                                </thead>
-                                <tbody id="examinerRows"></tbody>
-                                <tfoot>
-                                    <tr><td colspan="2" style="text-align:right;">TOTAL</td><td id="examinerTotal"></td></tr>
-                                </tfoot>
-                            </table>
-                        </section>
-                    </div>
-                    <div class="paper-foot">
-                        <span class="foot__hint" id="footHint"></span>
-                        <div class="foot__buttons">
-                            <button type="button" class="btn btn--soft" id="secondBtn" hidden></button>
-                            <button type="button" class="btn btn--main" id="mainBtn" disabled>
-                                <span id="mainBtnText">Check answer</span>
-                                <i data-lucide="arrow-right"></i>
-                            </button>
+                <label class="search">
+                    <i data-lucide="search"></i>
+                    <input type="search" id="search" placeholder="Search topics and lessons" autocomplete="off">
+                </label>
+                <div class="drop account" id="accountDrop">
+                    <button type="button" class="drop__btn" aria-haspopup="menu" aria-expanded="false">
+                        <span class="avatar" id="avatar"></span>
+                        <span id="accountName"></span>
+                        <i data-lucide="chevron-down"></i>
+                    </button>
+                    <div class="menu menu--right" hidden>
+                        <div class="menu__head">
+                            <span class="menu__name" id="menuName"></span>
+                            <span class="menu__sub" id="menuEmail"></span>
                         </div>
+                        <button type="button" class="menu__item"><i data-lucide="settings"></i> Settings</button>
+                        <button type="button" class="menu__item menu__item--danger" id="logOutBtn"><i data-lucide="log-out"></i></button>
                     </div>
                 </div>
-            </div>
+            </header>
+            <main class="panel" id="panel"></main>
         </div>
-        <div class="background" id="practice-questionsBackground"></div>
-        <div class="background" id="ai-tutorBackground"></div>
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/lucide@0.460.0/dist/umd/lucide.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
         <script src="../shared/supabase.js"></script>
         <script src="home.js"></script>
-        <script src="../quiz/engine.js"></script>
-        <script src="../quiz/generators/indices.js"></script>
-        <script src="../quiz/generators/surds.js"></script>
-        <script src="../quiz/quiz.js"></script>
     </body>
 </html>
