@@ -4,24 +4,25 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <title>Log in - Ingenio</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet" />
-        <script src="https://unpkg.com/lucide@latest"></script>
-        <link rel="stylesheet" href="login.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../login/login.css">
+        <script src="https://cdn.jsdelivr.net/npm/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     </head>
     <body>
-        <header class="auth-top">
+        <header class="topbar">
             <a href="../hero/hero.html" class="logo">
-                <img class="logo__img" src="../images/ingenio-logo-black.png" width="1290" height="410">
+                <img src="../images/ingenio-logo-white.png" alt="Ingenio" width="1290" height="410">
             </a>
-            <a href="../hero/hero.html" class="back"><i data-lucide="arrow-left"></i> Back to home</a>
+            <a href="../hero/hero.html" class="tbtn"><i data-lucide="arrow-left"></i> Back to home</a>
         </header>
-        <main class="auth">
-            <div class="card">
-                <h1 class="card__title">Welcome back!</h1>
-                <p class="card__sub">ERPCWEIOUNRPWOIEUNXIUWNIEXIQUWEXMIuwem log in bro</p>
-                <form id="loginForm" novalidate>
+        <main class="panel">
+            <section class="auth">
+                <h1 class="auth__title">Welcome back</h1>
+                <p class="auth__sub">Log in to pick up where you left off</p>
+                <form class="form" id="loginForm" novalidate>
                     <p class="form-alert" id="formAlert" role="alert"><i data-lucide="circle-alert"></i><span></span></p>
                     <div class="field" id="emailField">
                         <div class="field__top">
@@ -37,27 +38,22 @@
                         </div>
                         <div class="input-wrap">
                             <input class="input input--pw" id="password" name="password" type="password" placeholder="Enter your password" autocomplete="current-password">
-                            <button type="button" class="toggle-pw" id="togglePw">
+                            <button type="button" class="toggle-pw" id="togglePw" aria-label="Show password">
                                 <i data-lucide="eye" class="icon-show"></i>
                                 <i data-lucide="eye-off" class="icon-hide"></i>
                             </button>
                         </div>
                         <p class="error"><i data-lucide="circle-alert"></i><span></span></p>
                     </div>
-                    <label class="remember">
-                        <input type="checkbox" name="remember" checked>
-                        Keep me logged in
-                    </label>
                     <button type="submit" class="btn btn--solid submit" id="submitBtn">
                         <span class="label-text">Log in</span>
                         <i data-lucide="loader-circle" class="spinner"></i>
                     </button>
                 </form>
-                <p class="card__foot">New to Ingenio? <a href="../signup/signup.html">Create a free account</a></p>
-            </div>
+                <p class="auth__foot">New to Ingenio? <a href="../signup/signup.html">Create a new account</a></p>
+            </section>
         </main>
 
-        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
         <script src="../shared/supabase.js"></script>
         <script src="login.js"></script>
     </body>

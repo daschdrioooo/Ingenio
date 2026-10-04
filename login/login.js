@@ -1,19 +1,24 @@
 lucide.createIcons();
-const form=document.getElementById("loginForm");
+const form=document.getElementById("signupForm");
 const email=document.getElementById("email");
 const password=document.getElementById("password");
-const submitBtn=document.getElementById("submitBtn");
-const togglePw=document.getElementById("togglePw");
+const submitBtn=document.getElementById("togglePw");
 const formAlert=document.getElementById("formAlert");
+const signupView=document.getElementById("signupView");
+const sentView=document.getElementById("sentView");
+const sentEmail=document.getElementById("sentEmail");
+const resendBtn=document.getElementById("resendBtn");
+const changeEmail=document.getElementById("changeEmail");
 
 sb.auth.getSession().then(({data})=>{
-    if (data.session) routeSignedInUser(data,session,user)
+    if (data.session) routeSignedInUser(data.session.user);
 });
 
 togglePw.addEventListener("click",()=>{
     const showing=password.type==="text";
     password.type=showing?"password":"text";
     togglePw.classList.toggle("showing",!showing);
+    togglePw.setAttribute("aria-label",showing?"Show password":"Hide password");
     password.focus();
 });
 
@@ -40,15 +45,16 @@ function validate() {
         setError("emailField","Enter your email address");
         ok=false;
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
-        setError("emailField","That doesn't look like a valid email");
+        setError("emailField","That isn't a valid email");
         ok=false;
     } else setError("emailField","");
     if (!password.value) {
-        setError("passwordField",'Enter your password');
-        ok = false;
-    } else {
-        setError("passwordField","");
-    }
+        setError("passwordField","Create a password");
+        ok=false;
+    } else if (password.value.length<8) {
+        setError("passwordField","Use at least 8 characters");
+        ok=false;
+    } else setError("passwordField","");
     return ok;
 }
 
@@ -56,6 +62,7 @@ email.addEventListener("input",()=>{
     setError("emailField","");
     setAlert("");
 });
+
 password.addEventListener("input",()=>{
     setError("passwordField","");
     setAlert("");
@@ -69,22 +76,60 @@ form.addEventListener("submit",async(e)=>{
         return;
     }
     setLoading(true);
-    const {data,error}=await sb.auth.signInWithPassword({
+    const {data,error}=await sb.auth.signUp({
         email:email.value.trim(),
         password:password.value,
+        options:{emailRedirectTo:pageUrl("setup")},
     });
+    setLoading(false);
     if (error) {
-        setLoading(false);
-        if (error.code==="invalid_credentials") {
-            setError("passwordField","Email or password is incorrect");
-            password.select();
-        } else if (error.code==="email_not_confirmed") {
-            setError("emailField","Confirm your email first. Check your inbox for the link we sent.");
+        if (error.code==="weak_password") {
+            setError("passwordField","That password is too easy to guess, use a longer one");
+        } else if (error.code==="email__address_invalid") {
+            setError("emailField","That email address can't be used. Try another.");
+        } else if (error.code==="over_email_send_rate_limit") {
+            setAlert("Too many sign up emails sent. Wait a minute and try again.");
         } else {
-            setAlert("Couldn't log you in right now. Check your connection and try again.");
+            setAlert("Couldn't create your account right now. Check your connection and try again.");
             console.error(error);
         }
         return;
     }
-    routeSignedInUser(data.session.user);
+    if (data.user&&data.user.identities&&data.user.identities.length===0) {
+        setError("emailField","There is already an account registered with this email, log in instead");
+        return;
+    }
+    if (data.session) {
+        go("setup");
+        return;
+    }
+});
+
+function showSent(address) {
+    sentEmail.textContent=address;
+    signupView.hidden=true;
+    sentView.hidden=false;
+}
+
+resendBtn.addEventListener("click",async()=>{
+    resendBtn.disabled=true;
+    resendBtn.textContent='Sending...';
+    const {error}=await sb.auth.resend({
+        type:"signup",
+        email:sentEmail.textContent,
+        options:{emailRedirectTo:pageUrl("setup")},
+    });
+    resendBtn.textContent=error?"Couldn't resend, try again in a minute.":"Sent! Check your inbox";
+    setTimeout(()=>{
+        resendBtn.textContent="Resend email";
+        resendBtn.disabled=false;
+    },30000);
+});
+
+changeEmail.addEventListener("click",(e)=>{
+    e.preventDefault();
+    sentView.hidden=true;
+    signupView.hidden=false;
+    email.focus();
+    email.select();
 });
