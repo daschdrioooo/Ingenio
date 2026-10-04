@@ -181,18 +181,87 @@ button {
     margin-left:auto;
 }
 
-.avatar {
-    display:grid;
-    place-items:center;
-    width:24px;
-    height:24px;
-    flex-shrink:0;
-    overflow:hidden;
-    border-radius:50%;
-    background:var(--fill);
-    color:var(--muted);
-    font-size:12px;
-    font-weight:600;
+details[open] > summary .chevron {
+    transform: rotate(90deg);
+}
+
+.y10gcseHigher {
+    display: none;
+}
+
+.y10gcseFoundation {
+    display: none;  
+}
+
+.y11gcseHigher {
+    display: none;
+}
+
+.y11gcseFoundation {
+    display: none;
+}
+
+#miniPill {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    border-radius: 999px;
+    padding: 10px 16px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+    width: fit-content;
+    position: absolute;
+    top: 8px;
+    left: 8px;
+}
+
+#retractBtn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+}
+
+#retractBtn:hover {
+    background: #efefef;
+    border-radius: 50%;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#sideBar.retracted {
+    display: none;
+}
+
+body.retracted #miniPill {
+    display: flex;
+}
+
+#expandBtn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+}
+
+#expandBtn:hover {
+    background: #efefef;
+    border-radius: 50%;
+}
+
+.lessonLink {
+    display: block;
+    padding: 8px 16px;
+    margin: 8px 0;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #4f92ff;
+    font-weight: 600;
+    transition: background 0.15s;
 }
 
 .avatar img {

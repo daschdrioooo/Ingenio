@@ -11,7 +11,7 @@ Ingenio is a maths revision site built around the UK curriculum. It brings toget
 - Clean landing page with custom built logos
 - Authentication via Supabase, with logging in and signing up support (OAuth WIP)
 - Onboarding that logs: a) a username, b) year group, c) whether you study maths or further maths, current grade, and target grade
-- Dashboard that includes all the topics for the year selected with PowerPoints for each one
+- Dashboard that includes all the topics for the year selected with hundreds of PowerPoints, thousands of practice questions and many past papers for each one
 
 ## In progress
 - Questions
