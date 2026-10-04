@@ -4,7 +4,7 @@ const countryBtn=document.getElementById("countryBtn");
 const countryMenu=document.getElementById("countryMenu");
 
 function setCountryMenu(open) {
-    countryBtn.hidden=!open;
+    countryMenu.hidden=!open;
     countryBtn.setAttribute("aria-expanded",open);
 }
 
