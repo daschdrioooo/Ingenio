@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Ingenio</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header class="topbar">
+            <a href="#" class="logo">
+                <img src="../images/ingenio-logo-white.png" alt="Ingenii" width="1290" height="410">
+            </a>
+            <ul class="nav">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+            </ul>
+            <div class="actions">
+                <div class="drop country" id="countryDrop"></div>
+                    <button type="button" class="tbtn" id="countryBtn" aria-haspopup="menu" aria-expanded="false" aria-label="Country: United Kingdom"></button>
+                    <img class="flag" src="https://flagcdn.com/gb.svg" alt="" width="20" height="14">
+                    UK
+                    <i data-lucide="chevron-down"></i>
+                </div>
+                <div class="menu" id="countryMenu" hidden>
+                    <button type="button" class="menu__item">
+                        <img class="flag" src="https://flagcdn.com/gb.svg" alt="" width="20" height="14">
+                        United Kingdom
+                        <i data-lucide="check" class="tick"></i>
+                    </button>
+                    <p class="menu__note">more countries at some point (does it even matter were for uk curriculum)</p>
+                </div>
+            </div>
+        </header>
+        <main class="panel">
+            <section class="hero">
+                <h1 class="hero__title"><span>Ace your maths exams,</span><span>for completely free</span></h1>
+                <p class="hero__sub">idk</p>
+                <a href="../signup/signup.html" class="btn hero__cta">Sign up for free <i data-lucide="arrow-right"></i></a>
+            </section>
+            <section class="preview">
+                <div class="preview__box">placeholder for product preview</div>
+            </section>
+        </main>
+
+        <script src="https://cdn.jsdelivr.net/npm/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+        <script src="hero.js"></script>
+    </body>
+</html>
