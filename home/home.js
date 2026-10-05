@@ -13,7 +13,7 @@ const $ = (id)=>document.getElementById(id);
 const drops=[...document.querySelectorAll(".drop")];
 
 function setDrop(drop,open) {
-    drop.querySelector("menu").hidden=!open;
+    drop.querySelector(".menu").hidden=!open;
     drop.querySelector(".drop__btn").setAttribute("aria-expanded",open);
 }
 
@@ -66,7 +66,7 @@ function renderAccount() {
     $("accountName").textContent=user.username;
     $("menuName").textContent=`Year ${user.yearGroup} · ${level} ${subject}`;
     $("menuEmail").textContent=user.email;
-    const avatar=$(avatar);
+    const avatar=$("avatar");
     if (user.avatarUrl) {
         const img=document.createElement("img");
         img.src=user.avatarUrl;
@@ -83,7 +83,7 @@ $("logOutBtn").addEventListener("click",async()=>{
 });
 
 document.querySelectorAll("#nav a").forEach((link)=>{
-    link.addEventListener("#click",(e)=>{
+    link.addEventListener("click",(e)=>{
         e.preventDefault();
         document.querySelectorAll("#nav a").forEach((a)=>a.classList.remove("active"));
         link.classList.add("active");
