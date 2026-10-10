@@ -619,6 +619,126 @@
                                 "id":"gcse_stationary_points_and_turning_points_for_powers_of_x_lesson",
                                 "title":"Stationary Points and Turning Points For Powers of x",
                                 "ppt":null
+                            },
+                            {
+                                "id":"gcse_increasing_and_decreasing_functions_for_powers_of_x_lesson",
+                                "title":"Increasing and Decreasing Functions for Powers of x",
+                                "ppt":null
+                            },
+                            {
+                                "id":"gcse_equations_of_tangents_and_normals_for_powers_of_x_lesson",
+                                "title":"Equations of Tangents and Normals for Powers of x",
+                                "ppt":null
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "title":"Y11 Autumn 2",
+                "topics":[
+                    {
+                        "title":"Binomial Expansion (FM)",
+                        "lessons":[
+                            {
+                                "id":"gcse_binomial_expansion_lesson",
+                                "title":"Binomial Expansion",
+                                "ppt":null
+                            }
+                        ]
+                    },
+                    {
+                        "title":"Coordinate Geometry of Circles (FM)",
+                        "lessons":[
+                            {
+                                "id":"gcse_equations_of_circle_with_any_centre_lesson",
+                                "title":"Equations of Circles with any Centre",
+                                "ppt":null
+                            }
+                        ]
+                    },
+                    {
+                        "title":"Simultaneous Equations (3 unknowns) (FM)",
+                        "lessons":[
+                            {
+                                "id":"gcse_solving_quadratics_by_completing_the_square_lesson",
+                                "title":"Solving Quadratics by Completing the Square",
+                                "ppt":null
+                            }
+                        ]
+                    },
+                    {
+                        "title":"Further Factorisation Techniques (FM)",
+                        "lessons":[
+                            {
+                                "id":"gcse_further_factorisation_techniques_lesson",
+                                "title":"Further Factorisation Techniques",
+                                "ppt":null
+                            }
+                        ]
+                    },
+                    {
+                        "title":"The Factor Theorem (FM)",
+                        "lessons":[
+                            {
+                                "id":"gcse_the_factor_theorem_lesson",
+                                "title":"The Factor Theorem",
+                                "ppt":null
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "title":"Y11 Spring 1",
+                "topics":[
+                    {
+                        "title":"Matrices (FM)",
+                        "lessons":[
+                            {
+                                "id":"gcse_matrices_lesson",
+                                "title":"Matrices",
+                                "ppt":null
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "title":"Y11 Spring 2",
+                "topics":[
+                    {
+                        "title":"Advanced Trigonometry (FM)",
+                        "lessons":[
+                            {
+                                "id":"gcse_exact_trigonometric_values_lesson",
+                                "title":"Exact Trigonometric Values",
+                                "ppt":null
+                            },
+                            {
+                                "id":"gcse_exact_trigonometric_ratios_lesson",
+                                "title":"Exact Trigonometric Ratios",
+                                "ppt":null
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "title":"Y11 Summer 1",
+                "topics":[
+                    {
+                        "title":"GCSE Content Recap",
+                        "lessons":[
+                            {
+                                "id":"gcse_higher_maths_recap_lesson",
+                                "title":"GCSE Higher Maths Recap",
+                                "ppt":null
+                            },
+                            {
+                                "id":"gcse_further_maths_recap_lesson",
+                                "title":"GCSE Further Maths Recap",
+                                "ppt":null
                             }
                         ]
                     }
