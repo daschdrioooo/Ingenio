@@ -6,43 +6,51 @@
         <title>Ingenio - Premium</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
         <link rel="stylesheet" href="premium.css">
     </head>
     <body>
         <header class="topbar">
-            <a href="../hero.html" class="logo">
-                <img src="../../images/ingenio-logo-white.png" alt="Ingenio" width="1290" height="410">
+            <a href="../../hero/hero.html" class="logo" aria-label="Ingenio home">
+                Ingenio
             </a>
             <ul class="nav">
-                <li><a href="#features">Features</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="../premium/premium.html">Premium</a></li>
+                <li><a href="#features" class="tbtn">Features</a></li>
+                <li><a href="#about" class="tbtn">About</a></li>
+                <li><a href="../../hero/premium/premium.html" class="tbtn">Premium</a></li>
             </ul>
             <div class="actions">
-                <div class="drop country" id="countryDrop">
-                    <button type="button" class="tbtn" id="countryBtn" aria-haspopup="menu" aria-expanded="false" aria-label="Country: United Kingdom">
-                        <img class="flag" src="https://flagcdn.com/gb.svg" alt="" width="20" height="14">
-                        UK
-                        <i data-lucide="chevron-down"></i>
-                    </button>
-                    <div class="menu" id="countryMenu" hidden>
-                        <button type="button" class="menu__item">
-                            <img class="flag" src="https://flagcdn.com/gb.svg" alt="" width="20" height="14">
-                            United Kingdom
-                            <i data-lucide="check"></i>
-                        </button>
-                        <p class="menu__note">more countries at some point</p>
-                    </div>
+                <div class="picker">
+                    <span class="picker__divider"></span>
                 </div>
-                <a href="../../login/login.html" class="tbtn">Log in</a>
-                <a href="../../signup/signup.html" class="tbtn tbtn--solid">Sign up</a>
+                <a href="../login/login.html" class="tbtn">Log in</a>
+                <a href="../signup/signup.html" class="tbtn tbtn--solid">Sign up</a>
             </div>
         </header>
         <main>
-            <section class="premium_explain">
-                <h1 class="premium_explain__title">Pricing</h1>
-                <p class="premium_explain__sub">Choose a plan that works for you. Plans are billed monthly, or annually depending on your preference.</p>
+            <div class="doodles" aria-hidden="true">
+                <span style="--x:6%;--y:68%;--s:88px;--r:12deg"><i data-lucide="sigma"></i></span>
+                <span style="--x:42%;--y:9%;--s:54px;--r:14deg"><i data-lucide="pi"></i></span>
+                <span style="--x:90%;--y:13%;--s:70px;--r:-8deg"><i data-lucide="radical"></i></span>
+                <span style="--x:70%;--y:74%;--s:104px;--r:10deg"><i data-lucide="infinity"></i></span>
+                <span style="--x:29%;--y:64%;--s:46px;--r:-18deg"><i data-lucide="divide"></i></span>
+                <span style="--x:95%;--y:48%;--s:50px;--r:20deg"><i data-lucide="percent"></i></span>
+                <span style="--x:57%;--y:82%;--s:76px;--r:-6deg"><i data-lucide="calculator"></i></span>
+                <span style="--x:15%;--y:88%;--s:62px;--r:24deg"><i data-lucide="ruler"></i></span>
+                <span style="--x:84%;--y:86%;--s:68px;--r:-14deg"><i data-lucide="triangle-right"></i></span>
+                <span style="--x:3%;--y:22%;--s:42px;--r:12deg"><i data-lucide="equal"></i></span>
+                <span style="--x:39%;--y:92%;--s:56px;--r:8deg;"><i data-lucide="chart-spline"></i></span>
+                <span style="--x:52%;--y:46%;--s:34px;--r:20deg"><i data-lucide="x"></i></span>
+                <span style="--x:66%;--y:12%;--s:32px;--r:0deg"><i data-lucide="plus"></i></span>
+            </div>
+            <section class="premium-hero">
+                <div class="premium-hero__text">
+                    <h1 class="premium-hero__title"><span>Pricing</h1>
+                    <p class="premium-hero__sub">Choose the plan that works for you. Free or Premium, billed monthly or annually depending on your preference.</p>
+                </div>
             </section>
 
             <section class="plans">
