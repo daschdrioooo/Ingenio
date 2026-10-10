@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Ingenio - Premium</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="premium.css">
+    </head>
+    <body>
+        <header class="topbar">
+            <a href="../hero.html" class="logo">
+                <img src="../../images/ingenio-logo-white.png" alt="Ingenio" width="1290" height="410">
+            </a>
+            <ul class="nav">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="../premium/premium.html">Premium</a></li>
+            </ul>
+            <div class="actions">
+                <div class="drop country" id="countryDrop">
+                    <button type="button" class="tbtn" id="countryBtn" aria-haspopup="menu" aria-expanded="false" aria-label="Country: United Kingdom">
+                        <img class="flag" src="https://flagcdn.com/gb.svg" alt="" width="20" height="14">
+                        UK
+                        <i data-lucide="chevron-down"></i>
+                    </button>
+                    <div class="menu" id="countryMenu" hidden>
+                        <button type="button" class="menu__item">
+                            <img class="flag" src="https://flagcdn.com/gb.svg" alt="" width="20" height="14">
+                            United Kingdom
+                            <i data-lucide="check"></i>
+                        </button>
+                        <p class="menu__note">more countries at some point</p>
+                    </div>
+                </div>
+                <a href="../../login/login.html" class="tbtn">Log in</a>
+                <a href="../../signup/signup.html" class="tbtn tbtn--solid">Sign up</a>
+            </div>
+        </header>
+        <main>
+            <section class="premium_explain">
+                <h1 class="premium_explain__title">Pricing</h1>
+                <p class="premium_explain__sub">Choose a plan that works for you. Plans are billed monthly, or annually depending on your preference.</p>
+            </section>
+
+            <section class="plans">
+                <div class="plan">
+                    <h2>Free</h2>
+                    <p class="tagline">Free for everyone</p>
+                    <p class="price"><span class="amount">£0</span></p>
+                    <ul class="features">
+                        <li><i data-lucide="check"></i>Unlimited practice questions</li>
+                        <li><i data-lucide="check"></i>Topic Lessons and PowerPoints</li>
+                        <li><i data-lucide="check"></i>Limited AI tutor usage</li>
+                        <li><i data-lucide="check"></i>One Past Paper per day</li>
+                        <li><i data-lucide="check"></i>With ads</li>
+                    </ul>
+                </div>
+                <div class="plan">
+                    <h2>Premium</h2>
+                    <p class="tagline">No ads, unlimited past papers, ai tutor and more!</p>
+                    <p class="price"><span class="amount">£6.99</span><span class="per">/month</span></p>
+                    <p class="tagline">Or</p>
+                    <p class="price"><span class="amount">£69.99</span><span class="per">/year</span></p>
+                    <ul class="features">
+                        <li><i data-lucide="check"></i>Everything in Free</li>
+                        <li><i data-lucide="check"></i>No ads</li>
+                        <li><i data-lucide="check"></i>Unlimited past papers</li>
+                        <li><i data-lucide="check"></i>Unlimited AI tutor usage</li>
+                        <li><i data-lucide="check"></i>Error recall</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+        <footer>
+            
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+        <script src="premium.js"></script>
+    </body>
+</html>
