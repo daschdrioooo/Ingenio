@@ -1,19 +1,19 @@
 :root {
-    --shell:#0a0a0a;
-    --panel:#131313;
-    --bg:var(--shell);
-    --fg:#fff;
-    --text:#ededed;
-    --muted:rgba(255,255,255,0.6);
-    --faint:rgba(255,255,255,0.4);
-    --border:rgba(255,255,255,0.1);
-    --hover:rgba(255,255,255,0.05);
-    --fill:rgba(255,255,255,0.08);
-    --bad:#f87171;
-    --side-w:264px;
-    --top-h:44px;
+    --bg:#fff;
+    --fg:#0a0a0a;
+    --text:#171717;
+    --muted:#525252;
+    --faint:#a3a3a3;
+    --line:#ebebeb;
+    --hover:#f5f5f5;
+    --accent:#f76b15;
+    --accent-hover:#e05a0a;
+    --top-h:60px;
     --corner:20px;
-    color-scheme:dark;
+    --display:"Manrope";
+    --body:"Inter";
+    --bad: #dc2626;
+    --side-w:264px;
 }
 
 * {
@@ -27,9 +27,9 @@
 }
 
 body {
-    background:var(--shell);
+    background:var(--bg);
     color:var(--text);
-    font-family:"Geist";
+    font-family:"Inter";
     -webkit-font-smoothing:antialiased;
     height:100vh;
     overflow:hidden;
@@ -63,6 +63,7 @@ button {
     flex-direction:column;
     padding:20px 12px 12px;
     grid-area:side;
+    border: var(--line) 1px solid;
 }
 
 .side__logo {
@@ -103,7 +104,7 @@ button {
 }
 
 .nav a.active {
-    background:var(--fill);
+    background:var(--hover);
     color:var(--fg);
 }
 
@@ -119,6 +120,7 @@ button {
     align-items:center;
     gap:4px;
     padding:0 12px;
+    border-bottom: var(--line) 1px solid;
 }
 
 .drop {
@@ -231,8 +233,9 @@ button {
     z-index:20;
     min-width:200px;
     padding:6px;
-    background:var(--shell);
+    background:var(--bg);
     border-radius:12px;
+    border: 1px solid var(--line);
 }
 
 .menu--right {
@@ -244,7 +247,7 @@ button {
 .menu__head {
     padding:8px 10px 10px;
     margin-bottom:4px;
-    border-bottom:1px solid var(--border);
+    border-bottom:1px solid var(--line);
 }
 
 .menu__name {
@@ -303,7 +306,7 @@ button {
 
 .panel {
     grid-area:panel;
-    background:var(--panel);
+    background:var(--hover);
     border-top-left-radius:var(--corner);
     overflow-y:auto;
 }
