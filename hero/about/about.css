@@ -222,6 +222,17 @@ main {
     background-size: 300% auto;
 }
 
+.ingenio {
+    background-image: linear-gradient(to right, #ff5100, #ffa600, #ffc800, #ffa600, #ff5100);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent; 
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+    animation: shine 5s linear infinite;
+    background-size: 300% auto;
+}
+
 @keyframes shine {
   0% {
     background-position: 0% center;
@@ -236,6 +247,7 @@ main {
     max-width:1080px;
     margin:0 auto;
     padding:0 40px;
+    padding-bottom: 64px;
 }
 
 .subtext {
@@ -245,6 +257,16 @@ main {
     line-height:1.55;
     letter-spacing:-0.01em;
     margin-left: 16px;
+    list-style: circle inside;
+}
+
+.footertext {
+    color: var(--faint);
+    font-family: var(--body);
+    font-size: 12px;
+    line-height:1.55;
+    letter-spacing:-0.01em;
+    margin-left: 0;
 }
 
 .subtitle {
@@ -260,4 +282,9 @@ main {
 
 #mainsubtext {
     margin: 0;
+}
+
+footer {
+    padding-top: 32px;
+    padding-bottom: 64px;
 }

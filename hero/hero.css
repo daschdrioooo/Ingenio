@@ -245,7 +245,7 @@ main {
 }
 
 .hero__title span {
-    background-image: linear-gradient(to right, #ff5100, #ffa600, #ffea00, #ffa600, #ff5100);
+    background-image: linear-gradient(to right, #ff5100, #ffa600, #ffc800, #ffa600, #ff5100);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent; 
