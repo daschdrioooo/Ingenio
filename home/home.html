@@ -14,8 +14,8 @@
         <div class="app">
             <aside class="side">
                 <ul class="nav" id="nav">
-                    <li><a href="#" class="active"><i data-lucide="house"></i> Home</a></li>
-                    <li><a href="#"><i data-lucide="book-open"></i> Lessons</a></li>
+                    <li><a href="#" class="active" data-view="home"><i data-lucide="house"></i> Home</a></li>
+                    <li><a href="#" data-view="lessons"><i data-lucide="book-open"></i> Lessons</a></li>
                     <li><a href="#"><i data-lucide="pencil-line"></i> Practice questions</a></li>
                     <li><a href="#"><i data-lucide="file-text"></i> Practice papers</a></li>
                     <li><a href="#"><i data-lucide="sparkles"></i> AI tutor</a></li>
@@ -76,7 +76,33 @@
                     </div>
                 </div>
             </header>
-            <main class="main"></main>
+            <main class="main" id="main" data-view="home">
+                <div class="content" data-page="home">
+                    <section class="hello">
+                        <h1 class="hello__title" id="greeting"></h1>
+                        <p class="hello__sub" id="today"></p>
+                    </section>
+                </div>
+                <div class="content lessons" data-page="lessons" hidden>
+                    <h1 class="page__title">Lessons</h1>
+                    <p class="page__sub" id="lessonsSpec"></p>
+                    <div class="courses" id="courses"></div>
+                    <div class="terms" id="terms"></div>
+                    <div class="topics" id="topicList"></div>
+                </div>
+                <aside class="plan" aria-label="Today's revision plan">
+                    <div class="plan__head">
+                        <h2 class="plan__title">Today's plan</h2>
+                        <span class="plan__time" id="planTime"></span>
+                    </div>
+                    <div class="plan__progress">
+                        <div class="plan__bar"><div class="plan__fill" id="planFill"></div></div>
+                        <span class="plan__count" id="planCount"></span>
+                    </div>
+                    <ul class="plan__list" id="planList"></ul>
+                    <a href="#" class="plan__btn" id="planBtn">Start next <i data-lucide="arrow-right"></i></a>
+                </aside>
+            </main>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/lucide@0.460.0/dist/umd/lucide.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
