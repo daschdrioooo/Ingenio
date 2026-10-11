@@ -245,8 +245,23 @@ main {
 }
 
 .hero__title span {
-    display:block;
-    white-space:nowrap;
+    background-image: linear-gradient(to right, #ff5100, #ffa600, #ffea00, #ffa600, #ff5100);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent; 
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+    animation: shine 5s linear infinite;
+    background-size: 300% auto;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 300% center;
+  }
 }
 
 .hero__sub {
