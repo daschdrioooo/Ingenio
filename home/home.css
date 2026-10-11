@@ -394,7 +394,7 @@ button {
     color:var(--fg);
     font-family:var(--display);
     font-size:30px;
-    font-weight:700;
+    font-weight:600;
     letter-spacing:-0.04em;
 }
 
@@ -500,7 +500,7 @@ button {
     color:var(--fg);
     font-family:var(--display);
     font-size:17px;
-    font-weight:700;
+    font-weight:600;
     letter-spacing:-0.02em;
 }
 
@@ -638,7 +638,7 @@ button {
     color:var(--fg);
     font-family:var(--display);
     font-size:18px;
-    font-weight:700;
+    font-weight:600;
     letter-spacing:-0.02em;
 }
 
