@@ -39,6 +39,65 @@ const QUESTIONS=[
     },
 ];
 
+const FEATURES=[
+    {
+        name:"Lessons",
+        text:"PowerPoint lessons for every topic.",
+        icon:"book-open",
+        c:"#f76b15",
+        ink:"#fff"
+    },
+    {
+        name:"Practice questions",
+        text:"Exam-style questions, marked as soon as you answer.",
+        icon:"pencil-line",
+        c:"#ffe8d6",
+        ink:"#7c2d12",
+    },
+    {
+        name:"Practice papers",
+        text:"Practice papers expertly curated for optimal performance.",
+        icon:"file-text",
+        c:"#f75b15",
+        ink:"#fff"
+    },
+    {
+        name:"AI tutor",
+        text:"Get step-by-step personalised marking and help on any question.",
+        icon:"sparkles",
+        c:"#ffe8d6",
+        ink:"#7c2d12"
+    },
+    {
+        name:"Grade tracking",
+        text:"See how close you are to your target grade.",
+        icon:"trending-up",
+        c:"#f76b15",
+        ink:"#fff"
+    },
+    {
+        name:"100% free",
+        text:"No catches!",
+        icon:"heart",
+        c:"#ffe8d6",
+        ink:"#7c2d12"
+    }
+]
+
+const topicsTrack=document.getElementById("topicsTrack");
+const featureCard=(f,hidden)=>`
+<div class="feature" style="--c:${f.c};--ink:${f.ink}"${hidden?' aria-hidden="true"':""}>
+    <i data-lucide="${f.icon}" class="feature__icon"></i>
+    <span class="feature__badge"><i data-lucide="${f.icon}"></i></span>
+    <div class="feature__body">
+        <div class="feature__name">${f.name}</div>
+        <p class="feature__text">${f.text}</p>
+    </div>
+</div>`;
+
+topicsTrack.innerHTML=FEATURES.map((f)=>featureCard(f,false)).join("")+FEATURES.map((f)=>featureCard(f,true)).join("");
+lucide.createIcons();
+
 const demo=document.getElementById("demo");
 const demoBody=document.getElementById("demoBody");
 const demoBox=document.getElementById("demoBox");
