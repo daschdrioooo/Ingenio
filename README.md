@@ -39,11 +39,11 @@ Ingenio is built with HTML, CSS, and JS, and doesn't use frameworks. We might us
 
 ## Resources used
 - [Lucide Icons](https://lucide.dev) - icon library
-- [Geist](https://vercel.com/geist) - font
+- [Inter](https://fonts.google.com/specimen/Inter) - font
+- [Manrope](https://fonts.google.com/specimen/Manrope) - font
 - [Supabase](https://supabase.com) - database
 - [KaTeX]{https://katex.org} - math symbol displaying
 - Microsoft Office Online Viewer - PowerPoint Presentations
-- A lot of love <3
 
 ## License
 Copyright (c) 2026 DaschDrioooo, Carbonicality, all rights reserved.
