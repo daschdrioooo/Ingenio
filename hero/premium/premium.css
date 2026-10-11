@@ -283,7 +283,8 @@ main {
     list-style: none;
     padding-left: 0;
     margin-top: 1rem;
-    padding-bottom: 24px;
+    padding-bottom: 32px;
+    margin-left: 0.5rem;
 }
 
 .feature {
@@ -305,6 +306,8 @@ main {
 .tagline {
     color: var(--muted);
     font-family: var(--body);
+    padding-bottom: 1rem;
+    padding-top: 0.25rem;
 }
 
 .amount {
@@ -323,4 +326,10 @@ main {
     color: var(--faint);
     font-family: var(--body);
     padding: 0.5rem;
+}
+
+@media (max-width: 800px) {
+     .plans {
+        grid-template-columns: 1fr; 
+    } 
 }
