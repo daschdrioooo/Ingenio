@@ -208,7 +208,7 @@ button {
     padding:1px 6px;
     border:2px solid var(--line-soft);
     border-radius:6px;
-    cursor:var(--faint);
+    color:var(--faint);
     font-family:var(--body);
     font-size:11px;
 }
@@ -318,6 +318,13 @@ button {
 }
 
 .menu__name {
+    display:block;
+    color:var(--fg);
+    font-size:14px;
+    font-weight:600;
+}
+
+.menu__sub {
     display:block;
     margin-top:2px;
     color:var(--faint);
@@ -503,6 +510,10 @@ button {
     font-size:13px;
 }
 
+.lessons {
+    max-width:920px;
+}
+
 .lesson {
     display:flex;
     align-items:center;
@@ -571,7 +582,7 @@ button {
     background:none;
 }
 
-.lesson.is_soon .lesson__num {
+.lesson.is-soon .lesson__num {
     background:var(--hover);
     color:var(--faint);
 }
@@ -581,7 +592,7 @@ button {
 }
 
 .empty {
-    padding:48 20px;
+    padding:48px 20px;
     border:2px dashed var(--line);
     border-radius:18px;
     color:var(--faint);

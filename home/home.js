@@ -70,6 +70,9 @@ $("boardDrop").querySelectorAll("[data-value]").forEach((item)=>{
         renderBoard();
         closeDrops();
         saveBoard();
+        lessonsState.board=user.examBoard.toLowerCase();
+        lessonsState.courseId=null;
+        if (main.dataset.view==="lessons") renderLessons();
     });
 });
 
@@ -131,7 +134,8 @@ function renderPlan() {
     const done=PLAN.filter((t)=>t.done).length;
     const minutesLeft=PLAN.filter((t)=>!t.done).reduce((sum,t)=>sum+t.minutes,0);
     $("planFill").style.width=`${(done / PLAN.length)*100}%`;
-    $("planCount").textContent=minutesLeft?`${minutesLeft} min left`:"All done";
+    $("planCount").textContent=`${done} of ${PLAN.length} done`;
+    $("planTime").textContent=minutesLeft?`${minutesLeft} min left`:"All done";
     const finished=done===PLAN.length;
     $("planBtn").classList.toggle("is-finished",finished);
     $("planBtn").innerHTML=finished?'Done for today <i data-lucide="party-popper"></i>':'Start next <i data-lucide="arrow-right"></i>';
@@ -177,16 +181,16 @@ const termLabel=(term)=>term.title.replace(/^Y\d+\s*/,"");
 function highlight(title) {
     const safe=escapeHtml(title);
     if (!lessonsState.search) return safe;
-    const at=title.lowerCase().indexOf(lessonsState.search);
+    const at=title.toLowerCase().indexOf(lessonsState.search);
     if (at===-1) return safe;
     const end=at+lessonsState.search.length;
-    return escapeHtml(title.slace(0,at))+"<mark>"+escapeHtml(title.slice(at,end))+"</mark>"+escapeHtml(title.slice(end));
+    return escapeHtml(title.slice(0,at))+"<mark>"+escapeHtml(title.slice(at,end))+"</mark>"+escapeHtml(title.slice(end));
 }
 
 function lessonRow(lesson,number) {
     const ready=Boolean(lesson.ppt);
     return `
-    <button type="button" class="lessons${ready?"":" is-soon"}" data-ppt="${ready ? escapeHtml(lesson.ppt) : ""}">
+    <button type="button" class="lesson${ready?"":" is-soon"}" data-ppt="${ready ? escapeHtml(lesson.ppt) : ""}">
         <span class="lesson__num">${number}</span>
         <span class="lesson__title">${highlight(lesson.title)}</span>
         <span class="lesson__status">${ready?'Open <i data-lucide="chevron-right"></i>':"Soon"}</span>
@@ -220,9 +224,9 @@ function renderLessons() {
         lessonsState.term=0;
     }
     const course=board.courses.find((c)=>c.id===lessonsState.courseId);
-    $("courses").innerHTML=board.courses.map((c)=>{
-        `<button type="button" class="pill${c.id===course.id?" active":""}" data-course="${c.id}">${courseLabel(c)}</button>`;
-    }).join("");
+    $("courses").innerHTML=board.courses.map((c)=>
+        `<button type="button" class="pill${c.id===course.id?" active":""}" data-course="${c.id}">${courseLabel(c)}</button>`
+    ).join("");
     if (lessonsState.search) {
         $("terms").innerHTML="";
         const matches=[];
@@ -258,20 +262,13 @@ $("terms").addEventListener("click",(e)=>{
 $("topicList").addEventListener("click",(e)=>{
     const row=e.target.closest(".lesson");
     if (!row||!row.dataset.ppt) return;
-    window.open("https://view.officeapps.live.com/ip/embed.aspx?src="+encodeURIComponent(row.dataset.ppt),"_blank");
+    window.open("https://view.officeapps.live.com/op/embed.aspx?src="+encodeURIComponent(row.dataset.ppt),"_blank");
 });
 
 $("search").addEventListener("input",(e)=>{
     lessonsState.search=e.target.value.trim().toLowerCase();
     if (main.dataset.view!=="lessons") showView("lessons");
     else renderLessons();
-});
-
-document.addEventListener("keydown",(e)=>{
-    if (e.key==="/"&&document.activeElement.tagName!=="INPUT") {
-        e.preventDefault();
-        $("search").focus();
-    }
 });
 
 document.addEventListener("keydown",(e)=>{
