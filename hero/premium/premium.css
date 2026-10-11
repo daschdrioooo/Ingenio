@@ -119,34 +119,6 @@ button {
     margin-left:auto;
 }
 
-.picker {
-    display:flex;
-    align-items:center;
-    height:34px;
-    margin-right:8px;
-    border:2px solid var(--line);
-    border-radius:11px;
-}
-
-.picker .tbtn {
-    height:30px;
-    border-radius:9px;
-}
-
-.picker__divider {
-    width:2px;
-    height:18px;
-    background:var(--line);
-}
-
-.picker .placeholder {
-    color:var(--faint);
-}
-
-.drop {
-    position:relative;
-}
-
 .menu {
     position:absolute;
     top:calc(100% + 8px);
@@ -222,7 +194,7 @@ main {
     z-index:0;
     max-width:1080px;
     margin:0 auto;
-    padding:112px 40px 72px;
+    padding:72px 40px 72px;
     display:grid;
     grid-template-columns:minmax(0,520px) minmax(0,400px);
     justify-content:space-between;
@@ -270,20 +242,24 @@ main {
     font-weight:500;
     white-space:nowrap;
     transition:background 0.15s;
+    border: none;
+    justify-content: center;
+    cursor: pointer;
+    margin-top: auto;
 }
 
 .btn:hover {
     background:var(--accent-hover);
 }
 
-.btn svg {
-    width:18px;
-    height:18px;
-    transform:transform 0.2s;
+.btn .svg {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.2s;
 }
 
-.btn:hover svg {
-    transition:translateX(3px);
+.btn:hover .svg {
+    transform: translateX(12px);
 }
 
 .plans {
@@ -296,8 +272,55 @@ main {
 
 .plan {
     padding: 1rem;
-    border: 1px solid var(--hover);
+    border: 1px solid var(--line);
     border-radius: 12px;
     display: flex;
     flex-direction: column;
+    background: var(--bg);
+}
+
+.features {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 1rem;
+    padding-bottom: 24px;
+}
+
+.feature {
+    padding-top: 0.25rem;
+}
+
+.check {
+    width: 20px;
+    height: auto;
+    margin-right: 8px;
+    color: var(--accent);
+}
+
+.h2 {
+    font-family: var(--display);
+    color: var(--fg);
+}
+
+.tagline {
+    color: var(--muted);
+    font-family: var(--body);
+}
+
+.amount {
+    color: var(--fg);
+    font-family: var(--body);
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.per {
+    color: var(--muted);
+    font-family: var(--body);
+}
+
+.or {
+    color: var(--faint);
+    font-family: var(--body);
+    padding: 0.5rem;
 }
