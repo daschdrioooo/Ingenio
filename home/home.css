@@ -5,10 +5,12 @@
     --muted:#525252;
     --faint:#a3a3a3;
     --line:#ebebeb;
-    --hover:#f5f5f5;
     --accent:#f76b15;
-    --accent-selected:#ff833bd9;
-    --accent-hover: #ff7b2e98;
+    --hover:rgba(0,0,0,0.045);
+    --line-soft:rgba(0,0,0,0.07);
+    --accent-hover:#e05a0a;
+    --accent-tint:rgba(247,107,21,0.1);
+    --accent-ink:#c2410c;
     --top-h:60px;
     --corner:20px;
     --display:"Manrope";
@@ -28,7 +30,7 @@
 }
 
 body {
-    background:var(--bg);
+    background:linear-gradient(to bottom,rgba(247,107,21,0.16),rgba(253,186,116,0.08) 280px,rgba(255,255,255,0) 560px) no-repeat, var(--bg);
     color:var(--text);
     font-family:"Inter";
     -webkit-font-smoothing:antialiased;
@@ -64,7 +66,6 @@ button {
     flex-direction:column;
     padding:20px 12px 12px;
     grid-area:side;
-    border: var(--line) 1px solid;
 }
 
 .side__logo {
@@ -100,13 +101,13 @@ button {
 }
 
 .nav a:hover {
-    background:var(--accent-hover);
-    color:var(--hover);
+    background:var(--hover);
+    color:var(--fg);
 }
 
 .nav a.active {
-    background:var(--accent-selected);
-    color:var(--hover);
+    background:var(--accent-tint);
+    color:var(--accent-ink);
 }
 
 .nav svg {
@@ -121,7 +122,6 @@ button {
     align-items:center;
     gap:4px;
     padding:0 12px;
-    border-bottom: var(--line) 1px solid;
 }
 
 .drop {
@@ -146,8 +146,8 @@ button {
 
 .drop__btn:hover,
 .drop__btn[aria-expanded="true"] {
-    background:var(--accent-hover);
-    color: var(--hover);
+    background:var(--hover);
+    color:var(--fg);
 }
 
 .drop__btn svg {
@@ -169,15 +169,14 @@ button {
     height:32px;
     padding:0 10px;
     border-radius:8px;
-    color:var(--faint);
     cursor:text;
     transition:background 0.15s;
 }
 
 .search:hover,
 .search:focus-within {
-    background:var(--accent-hover);
-    color: var(--hover);
+    background:var(--hover);
+    color:var(--fg);
 }
 
 .search svg {
@@ -217,8 +216,8 @@ button {
     flex-shrink:0;
     overflow:hidden;
     border-radius:50%;
-    background:var(--fill);
-    color:var(--muted);
+    background:var(--accent-tint);
+    color:var(--accent-ink);
     font-size:12px;
     font-weight:600;
 }
@@ -238,7 +237,7 @@ button {
     padding:6px;
     background:var(--bg);
     border-radius:12px;
-    border: 1px solid var(--line);
+    border: 2px solid var(--line);
 }
 
 .menu--right {
@@ -286,8 +285,8 @@ button {
 }
 
 .menu__item:hover {
-    background:var(--accent-hover);
-    color: var(--hover);
+    background:var(--hover);
+    color:var(--fg);
 }
 
 .menu__item svg {
@@ -310,8 +309,11 @@ button {
 
 .panel {
     grid-area:panel;
-    background:var(--hover);
-    color: var(--hover);
+    background:var(--bg);
+    color:var(--text);
+    border:2px solid var(--line-soft);
+    border-right:none;
+    border-bottom:none;
     border-top-left-radius:var(--corner);
     overflow-y:auto;
 }
