@@ -7,7 +7,8 @@
     --line:#ebebeb;
     --hover:#f5f5f5;
     --accent:#f76b15;
-    --accent-hover:#e05a0a;
+    --accent-selected:#ff833bd9;
+    --accent-hover: #ff7b2e98;
     --top-h:60px;
     --corner:20px;
     --display:"Manrope";
@@ -99,13 +100,13 @@ button {
 }
 
 .nav a:hover {
-    background:var(--hover);
-    color:var(--fg);
+    background:var(--accent-hover);
+    color:var(--hover);
 }
 
 .nav a.active {
-    background:var(--hover);
-    color:var(--fg);
+    background:var(--accent-selected);
+    color:var(--hover);
 }
 
 .nav svg {
@@ -145,7 +146,8 @@ button {
 
 .drop__btn:hover,
 .drop__btn[aria-expanded="true"] {
-    background:var(--hover);
+    background:var(--accent-hover);
+    color: var(--hover);
 }
 
 .drop__btn svg {
@@ -174,7 +176,8 @@ button {
 
 .search:hover,
 .search:focus-within {
-    background:var(--hover);
+    background:var(--accent-hover);
+    color: var(--hover);
 }
 
 .search svg {
@@ -283,7 +286,8 @@ button {
 }
 
 .menu__item:hover {
-    background:var(--hover);
+    background:var(--accent-hover);
+    color: var(--hover);
 }
 
 .menu__item svg {
@@ -307,6 +311,7 @@ button {
 .panel {
     grid-area:panel;
     background:var(--hover);
+    color: var(--hover);
     border-top-left-radius:var(--corner);
     overflow-y:auto;
 }
