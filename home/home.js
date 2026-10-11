@@ -7,9 +7,11 @@ const user={
     level:"gcse",
     subject:"maths",
     examBoard:"Edexcel",
+    streak:0,
+    xp:0
 };
 
-const $ = (id)=>document.getElementById(id);
+const $=(id)=>document.getElementById(id);
 const drops=[...document.querySelectorAll(".drop")];
 
 function setDrop(drop,open) {
@@ -38,22 +40,33 @@ document.addEventListener("keydown",(e)=>{
     if (e.key==="Escape") closeDrops();
 });
 
-function renderBoard() {
-    $("boardLevel").textContent=user.level==="alevel"?"A-Level":"GCSE";
-    $("boardName").textContent=user.examBoard;
-    document.querySelectorAll("[data-board]").forEach((item)=>{
-        item.classList.toggle("selected",item.dataset.board===user.examBoard);
+function markSelected(drop,value) {
+    drop.querySelectorAll("[data-value]").forEach((item)=>{
+        item.classList.toggle("selected",item.dataset.value===value);
     });
 }
 
-async function saveBoard() {
-    const {error} =await sb.from("profiles").update({exam_board:user.examBoard}).eq("id",user.id);
-    if (error) console.warn("couldn't save exam board:",error.message);
+$("levelDrop").querySelectorAll("[data-value]").forEach((item)=>{
+    item.addEventListener("click",()=>{
+        $("levelName").textContent=item.dataset.value;
+        markSelected($("levelDrop"),item.dataset.value);
+        closeDrops();
+    });
+});
+
+function renderBoard() {
+    $("boardName").textContent=user.examBoard;
+    markSelected($("boardDrop"),user.examBoard);
 }
 
-document.querySelectorAll("[data-board]").forEach((item)=>{
+async function saveBoard() {
+    const {error}=await sb.from("profiles").update({exam_board:user.examBoard}).eq("id",user.id);
+    if (error) console.warn("Couldn't save exam board:",error.message);
+}
+
+$("boardDrop").querySelectorAll("[data-value]").forEach((item)=>{
     item.addEventListener("click",()=>{
-        user.examBoard=item.dataset.board;
+        user.examBoard=item.dataset.value;
         renderBoard();
         closeDrops();
         saveBoard();
@@ -63,8 +76,10 @@ document.querySelectorAll("[data-board]").forEach((item)=>{
 function renderAccount() {
     const level=user.level==="alevel"?"A-level":"GCSE";
     const subject=user.subject==="further"?"Further Maths":"Maths";
-    $("accountName").textContent=user.username;
-    $("menuName").textContent=`Year ${user.yearGroup} · ${level} ${subject}`;
+    $("levelName").textContent=level;
+    markSelected($("levelDrop"),level);
+    $("menuName").textContent=user.username;
+    $("menuCourse").textContent=`Year ${user.yearGroup} · ${level} ${subject}`;
     $("menuEmail").textContent=user.email;
     const avatar=$("avatar");
     if (user.avatarUrl) {
@@ -75,9 +90,11 @@ function renderAccount() {
     } else {
         avatar.textContent=user.username.charAt(0).toUpperCase();
     }
+    $("streak").textContent=user.streak;
+    $("xp").textContent=user.xp.toLocaleString("en-GB");
 }
 
-$("logOutBtn").addEventListener("click",async()=>{
+$("logOutBtn").addEventListener("click",async ()=>{
     await sb.auth.signOut();
     go("hero");
 });
@@ -88,6 +105,13 @@ document.querySelectorAll("#nav a").forEach((link)=>{
         document.querySelectorAll("#nav a").forEach((a)=>a.classList.remove("active"));
         link.classList.add("active");
     });
+});
+
+document.addEventListener("keydown",(e)=>{
+    if (e.key==="/"&&document.activeElement.tagName!=="INPUT") {
+        e.preventDefault();
+        $("search").focus();
+    }
 });
 
 (async ()=>{
@@ -108,7 +132,7 @@ document.querySelectorAll("#nav a").forEach((link)=>{
     user.yearGroup=profile.year_group;
     user.level=profile.level;
     user.subject=profile.subject;
-    user.examBoard=profile.exam_board||"Edexcel"; // fallback to edexcel because basically eveyrone uses it anyway
+    user.examBoard=profile.exam_board||"Edexcel";
     renderBoard();
     renderAccount();
     lucide.createIcons();

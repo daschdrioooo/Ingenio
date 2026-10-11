@@ -12,52 +12,71 @@
     <body class="checking">
         <div class="app">
             <aside class="side">
-                <a href="#" class="side__logo">
-                    <img src="../images/ingenio-logo-black.png" alt="Ingenio" width="1290" height="410">
-                </a>
                 <ul class="nav" id="nav">
-                    <li><a href="#" class="active" data-page="home"><i data-lucide="house"></i> Home</a></li>
-                    <li><a href="#" data-page="lessons"><i data-lucide="book-open"></i> Lessons</a></li>
-                    <li><a href="#" data-page="papers"><i data-lucide="file-text"></i> Practice papers</a></li>
-                    <li><a href="#" data-page="questions"><i data-lucide="pencil-line"></i> Practice questions</a></li>
-                    <li><a href="#" data-page="tutor"><i data-lucide="message-circle"></i> AI tutor</a></li>
+                    <li><a href="#" class="active"><i data-lucide="house"></i> Home</a></li>
+                    <li><a href="#"><i data-lucide="book-open"></i> Lessons</a></li>
+                    <li><a href="#"><i data-lucide="pencil-line"></i> Practice questions</a></li>
+                    <li><a href="#"><i data-lucide="file-text"></i> Practice papers</a></li>
+                    <li><a href="#"><i data-lucide="sparkles"></i> AI tutor</a></li>
                 </ul>
             </aside>
             <header class="topbar">
-                <div class="drop" id="boardDrop">
-                    <button type="button" class="drop__btn" aria-haspopup="menu" aria-expanded="false">
-                        <span><span class="board__level" id="boardLevel"></span> <span id="boardName"></span></span>
-                        <i data-lucide="chevron-down"></i>
-                    </button>
-                    <div class="menu" hidden>
-                        <button type="button" class="menu__item" data-board="Edexcel">Edexcel <i data-lucide="check" class="tick"></i></button>
-                        <button type="button" class="menu__item" data-board="AQA">AQA <i data-lucide="check" class="tick"></i></button>
-                        <button type="button" class="menu__item" data-board="OCR">OCR <i data-lucide="check" class="tick"></i></button>
+                <a href="../hero/hero.html" class="logo">Ingenio</a>
+                <div class="picker">
+                    <div class="drop" id="levelDrop">
+                        <button type="button" class="tbtn drop__btn" aria-haspopup="menu" aria-expanded="false">
+                            <span class="drop__value" id="levelName">GCSE</span>
+                            <i data-lucide="chevrons-up-down"></i>
+                        </button>
+                        <div class="menu" hidden>
+                            <button type="button" class="menu__item selected" data-value="GCSE">GCSE <i data-lucide="check" class="tick"></i></button>
+                            <button type="button" class="menu__item" data-value="A-level">A-level <i data-lucide="check" class="tick"></i></button>
+                        </div>
+                    </div>
+                    <span class="picker__divider"></span>
+                    <div class="drop" id="boardDrop">
+                        <button type="button" class="tbtn drop__btn" aria-haspopup="menu" aria-expanded="false">
+                            <span class="drop__value" id="boardName">Edexcel</span>
+                            <i data-lucide="chevrons-up-down"></i>
+                        </button>
+                        <div class="menu" hidden>
+                            <button type="button" class="menu__item selected" data-value="Edexcel">Edexcel <i data-lucide="check" class="tick"></i></button>
+                            <button type="button" class="menu__item" data-value="AQA">AQA <i data-lucide="check" class="tick"></i></button>
+                            <button type="button" class="menu__item" data-value="OCR">OCR <i data-lucide="check" class="tick"></i></button>
+                        </div>
                     </div>
                 </div>
                 <label class="search">
                     <i data-lucide="search"></i>
                     <input type="search" id="search" placeholder="Search topics and lessons" autocomplete="off">
+                    <kbd>/</kbd>
                 </label>
-                <div class="drop account" id="accountDrop">
-                    <button type="button" class="drop__btn" aria-haspopup="menu" aria-expanded="false">
+                <div class="counters">
+                    <span class="counter counter--streak" title="Streak">
+                        <i data-lucide="flame"></i> <span id="streak">0</span>
+                    </span>
+                    <span class="counter counter--xp" title="Total XP">
+                        <i data-lucide="zap"></i> <span id="xp">0</span> <small>XP</small>
+                    </span>
+                </div>
+                <div class="drop account">
+                    <button type="button" class="avatar-btn drop__btn" aria-haspopup="menu" aria-expanded="menu" aria-expanded="false" aria-label="Account">
                         <span class="avatar" id="avatar"></span>
-                        <span id="accountName"></span>
-                        <i data-lucide="chevron-down"></i>
                     </button>
                     <div class="menu menu--right" hidden>
                         <div class="menu__head">
                             <span class="menu__name" id="menuName"></span>
+                            <span class="menu__sub" id="menuCourse"></span>
                             <span class="menu__sub" id="menuEmail"></span>
                         </div>
-                        <button type="button" class="menu__item"><i data-lucide="settings"></i> Settings</button>
+                        <button type="button" class="menu__item"><i data-lucide="setings"></i> Settings</button>
+                        <a href="../hero/premium/premium.html"><i data-lucide="crown"></i> Go Premium</a>
                         <button type="button" class="menu__item menu__item--danger" id="logOutBtn"><i data-lucide="log-out"></i> Log out</button>
                     </div>
                 </div>
             </header>
-            <main class="panel" id="panel"></main>
+            <main class="main"></main>
         </div>
-
         <script src="https://cdn.jsdelivr.net/npm/lucide@0.460.0/dist/umd/lucide.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
         <script src="../shared/supabase.js"></script>
