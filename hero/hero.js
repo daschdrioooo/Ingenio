@@ -76,7 +76,7 @@ const FEATURES=[
         ink:"#fff"
     },
     {
-        name:"100% free",
+        name:"All revision content, for free",
         text:"No catches!",
         icon:"heart",
         c:"#ffe8d6",
