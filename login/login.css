@@ -27,11 +27,35 @@
 body {
     background:var(--bg);
     color:var(--text);
-    font-family:"Geist";
     -webkit-font-smoothing:antialiased;
     min-height:100vh;
     display:flex;
     flex-direction:column;
+    font-family: var(--body);
+    position: relative;
+}
+
+.doodles {
+    position:absolute;
+    inset:0;
+    z-index:-1;
+    pointer-events:none;
+}
+
+.doodles span {
+    position:absolute;
+    left:var(--x);
+    top:var(--y);
+    width:var(--s);
+    height:var(--s);
+    color:rgba(247,101,27,0.2);
+    transform:translate(-50%,-50%) rotate(var(--r));
+}
+
+.doodles svg {
+    display:block;
+    width:100%;
+    height:100%;
 }
 
 a {
@@ -40,7 +64,7 @@ a {
 }
 
 button {
-    font:inherit;
+    font-family: var(--body);
     color:inherit;
 }
 
@@ -52,6 +76,7 @@ button {
     padding:0 12px 0 24px;
     flex-shrink:0;
     border-bottom: var(--line) solid 1px;
+    background: var(--bg);
 }
 
 .logo {
@@ -89,18 +114,20 @@ button {
     display:flex;
     justify-content:center;
     padding:96px 24px 64px;
-    background:var(--bg);
+    background: transparent;
 }
 
 .auth {
     width:100%;
     max-width:360px;
+    background: var(--bg);
 }
 
 .auth__title {
     color:var(--fg);
     font-size:34px;
     font-weight:600;
+    font-family: var(--display);
     letter-spacing:-0.045em;
     line-height:1.1;
 }
@@ -110,6 +137,7 @@ button {
     color:var(--muted);
     font-size:15px;
     line-height:1.5;
+    font-family: var(--body);
 }
 
 .auth__sub strong {
