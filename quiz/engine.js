@@ -204,7 +204,7 @@ function numberQuestion({value,dp=0,units="",...rest}) {
         value:rounded,
         tolerance:dp===0?0.5:0.5*10**-dp,
         answer:`${numTex(rounded.toFixed(dp))}${units}`,
-        inputHint:dp===0?"Round to a whole number.":`Give your answer to ${dp} decimal place${dp===1?"":"s"}.`;
+        inputHint:dp===0?"Round to a whole number.":`Give your answer to ${dp} decimal place${dp===1?"":"s"}.`,
     };
 }
 
