@@ -1,12 +1,10 @@
-//question engine
 const TOPICS=[];
-
 function registerTopic(topic) {
     if (!topic.id||!topic.title||typeof topic.generate!=="function") {
-        throw new Error(`a topic needs an id, title, and generate function ${topic.id || "no id"}`);
+        throw new Error(`A topic needs an id, a title, and a generate() function: ${topic.id||"(no id)"}`);
     }
     if (getTopic(topic.id)) {
-        throw new Error(`two topics have the same id ${topic.id}`);
+        throw new Error(`Two topics have the same id: ${topic.id}`);
     }
     TOPICS.push({
         group:"Other",
@@ -14,7 +12,7 @@ function registerTopic(topic) {
         grade:null,
         calculator:false,
         icon:"sigma",
-        ...topic
+        ...topic,
     });
 }
 
@@ -37,7 +35,7 @@ function topicsByGroup() {
 
 function makeSet(topicId,count) {
     const topic=getTopic(topicId);
-    if (!topic) throw new Error(`no topic called ${topicId}`);
+    if (!topic) throw new Error(`No topic called ${topicId}`);
     const questions=[];
     const seen=new Set();
     for (let tries=0;questions.length<count&&tries<count*25;tries++) {
@@ -49,14 +47,13 @@ function makeSet(topicId,count) {
     return questions;
 }
 
-//helpers
 function randInt(min,max) {
-    return Math.floor(Math.random() *(max-min+1))+min;
+    return Math.floor(Math.random()*(max-min+1)) + min;
 }
 
 function randNonZero(min,max) {
     let n=0;
-    while (n===0) n=randInt(min,max);
+    while (n===0) n=randint(min,max);
     return n;
 }
 
@@ -72,7 +69,7 @@ function shuffle(list) {
     const copy=[...list];
     for (let i=copy.length-1;i>0;i--) {
         const j=randInt(0,i);
-        [copy[i],copy[j]=copy[j],copy[i]];
+        [copy[i],copy[j]]=[copy[j],copy[i]];
     }
     return copy;
 }
@@ -94,7 +91,7 @@ function simplify(n,d) {
     const g=gcd(n,d)||1;
     n/=g;
     d/=g;
-    if (d>0) {
+    if (d<0) {
         n=-n;
         d=-d;
     }
@@ -117,23 +114,22 @@ function splitSquare(n) {
     return {outside,inside};
 }
 
-//formatting
 function numTex(value) {
     const [whole,decimals]=String(value).split(".");
-    const grouped=whole.replace(/\B(?=(\d{3})+(?!\d))/g,"{,}");
+    const grouped=whole.replace(/\B(?=(\d{3})+(?!\d))/g, "{,}");
     return decimals?`${grouped}.${decimals}`:grouped;
 }
 
 function moneyTex(value) {
     const text=Number.isInteger(value)?String(value):value.toFixed(2);
-    return `\\pounds ${numText(text)}`;
+    return `\\text{£}${numTex(text)}`;
 }
 
 function fracTex(n,d) {
     const f=simplify(n,d);
     if (f.d===1) return String(f.n);
     const sign=f.n<0?"-":"";
-    return `${sign}\\dfrac{${Math.abs(f.n)}}}{${f.d}}`;
+    return `${sign}\\dfrac{${Math.abs(f.n)}}{${f.d}}`;
 }
 
 function powTex(base,power) {
@@ -142,7 +138,7 @@ function powTex(base,power) {
     return `${base}^{${power}}`;
 }
 
-function rootTex(base,power) {
+function rootTex(value,n=2) {
     return n===2?`\\sqrt{${value}}`:`\\sqrt[${n}]{${value}}`;
 }
 
@@ -181,7 +177,7 @@ function choiceQuestion({correct,wrong,...rest}) {
         ...baseQuestion(rest),
         type:"choice",
         choices:shuffle(choices),
-        answer:correct
+        answer:correct,
     };
 }
 
@@ -192,7 +188,7 @@ function inputQuestion({n,d=1,...rest}) {
         type:"input",
         value:f.n/f.d,
         answer:fracTex(f.n,f.d),
-        inputHint:f.d===1?"Type a whole number.":"Fractions like 3/4 are fine."
+        inputHint:f.d===1?"Type a whole number.":"Fractions like 3/4 are fine.",
     };
 }
 
@@ -211,28 +207,28 @@ function numberQuestion({value,dp=0,units="",...rest}) {
 function surdQuestion({coef,radicand,...rest}) {
     return {
         ...baseQuestion(rest),
-        type:"surd",
+        type:"sird",
         coef,
         radicand,
         value:coef*Math.sqrt(radicand),
         answer:surdTex(coef,radicand),
-        inputHint:"Type the root as sqrt, 3sqrt5 or 3√5",
+        inputHint:"Type the root as sqrt, e.g 3sqrt5 or 3√5",
     };
 }
 
 function cleanAnswer(text) {
     return text
-        .trim()
-        .toLowerCase()
-        .replace(/[---]/g,"-")
-        .replace(/^[a-z]\s*=\s*/,"")
-        .replace(/\s+/g,"");
+    .trim()
+    .toLowerCase()
+    .replace(/[---]/g,"-")
+    .replace(/^[a-z]\s*=\s*/,"")
+    .replace(/\s+/g,"");
 }
 
 function parseNumber(text) {
     const mixed=text.trim().replace(/[---]/g,"-").match(/^(-?)(\d+)\s+(\d+)\s*\/\s*(\d+)$/);
     if (mixed) {
-        const [sign,whole,top,bottom]=mixed;
+        const [,sign,whole,top,bottom]=mixed;
         if (Number(bottom)===0) return null;
         const value=Number(whole)+Number(top)/Number(bottom);
         return sign?-value:value;
@@ -241,7 +237,7 @@ function parseNumber(text) {
     if (!clean) return null;
     if (clean.includes("/")) {
         const parts=clean.split("/");
-        if (parts.length!==2||!parts[0]||!parts[1]) return null;
+        if (parts.length!==2||!parts[0]||parts[1]) return null;
         const top=Number(parts[0]);
         const bottom=Number(parts[1]);
         if (Number.isNaN(top)||Number.isNaN(bottom)||bottom===0) return null;
@@ -285,7 +281,7 @@ function markAnswer(question,given) {
     }
     if (question.type==="number") {
         const right=Math.abs(value-question.value)<=question.tolerance+1e-9;
-        return {right,note:null}
+        return {right,note:null};
     }
     const right=Math.abs(value-question.value)<1e-9;
     return {right,note:null};
