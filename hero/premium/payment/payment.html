@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Ingenio - Checkout</title>
+        <link rel="icon" type="image/png" href="../../../images/favicon.png">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+        <link rel="stylesheet" href="payment.css">
+    </head>
+    <body>
+        <header class="topbar">
+            <a href="../../hero.html" class="logo">
+                <img src="../../../images/ingenio-logo-black.png" alt="Ingenio" width="1290" height="410">
+            </a>
+            <a href="../premium.html" class="tbtn"><i data-lucide="arrow-left"></i> Go back</a>
+        </header>
+        <main class="checkout">
+            <section class="summary">
+                <div class="summary__inner">
+                    <p class="summary__label">Subscribe to Ingenio Premium</p>
+                    <p class="summary_monthly_price">3.99<span class="per">/month</span></p>
+                    <div class="summaryItem">
+                        <img class="summaryItem__img" src="../../../images/favicon.png"> 
+                        <p class="summaryItem__text">Premium tier adds an AI tutor, and removes ads. It's also a great way to support us!</p>
+                    </div>
+                    <div class="totals">
+                        <div class="subtotal">
+                            <div class="subtotalText">
+                                <p class="totalsText">Subtotal</p>
+                                <p class="totalsPrice" id="subtotalPrice">£3.99</p>
+                            </div>
+                        </div>
+                        <div class="total">
+                            <p class="totalsText">Total due today</p>
+                            <p class="totalsPrice" id="totalPrice">£3.99</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="pay">
+                <form id="payForm">
+
+                </form>
+            </section>
+        </main>
+        <script src="payment.js"></script>
+    </body>
+</html>

@@ -49,4 +49,4 @@ Ingenio is built with HTML, CSS, and JS, and doesn't use frameworks. We might us
 Copyright (c) 2026 DaschDrioooo, Carbonicality, all rights reserved.
 Nobody is permitted to use, copy, modify, or distribute this software or its source code for any purpose without explicit written permission from the authors.
 
-Ingenio is a submission to Hack Club's thirdspace YSWS (thirdspace.hackclub.com).
+Ingenio is a submission to Hack Club's thirdspace YSWS (thirdspace.hackclub.com)

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Ingenio - Features</title>
+        <link rel="icon" type="image/png" href="../../images/favicon.png">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+        <link rel="stylesheet" href="features.css">
+    </head>
+    <body>
+        <div class="doodles" aria-hidden="true">
+                <span style="--x:6%;--y:68%;--s:88px;--r:12deg"><i data-lucide="sigma"></i></span>
+                <span style="--x:42%;--y:9%;--s:54px;--r:14deg"><i data-lucide="pi"></i></span>
+                <span style="--x:90%;--y:13%;--s:70px;--r:-8deg"><i data-lucide="radical"></i></span>
+                <span style="--x:70%;--y:74%;--s:104px;--r:10deg"><i data-lucide="infinity"></i></span>
+                <span style="--x:29%;--y:64%;--s:46px;--r:-18deg"><i data-lucide="divide"></i></span>
+                <span style="--x:95%;--y:48%;--s:50px;--r:20deg"><i data-lucide="percent"></i></span>
+                <span style="--x:57%;--y:82%;--s:76px;--r:-6deg"><i data-lucide="calculator"></i></span>
+                <span style="--x:15%;--y:88%;--s:62px;--r:24deg"><i data-lucide="ruler"></i></span>
+                <span style="--x:84%;--y:86%;--s:68px;--r:-14deg"><i data-lucide="triangle-right"></i></span>
+                <span style="--x:3%;--y:22%;--s:42px;--r:12deg"><i data-lucide="equal"></i></span>
+                <span style="--x:39%;--y:92%;--s:56px;--r:8deg;"><i data-lucide="chart-spline"></i></span>
+                <span style="--x:52%;--y:46%;--s:34px;--r:20deg"><i data-lucide="x"></i></span>
+                <span style="--x:66%;--y:12%;--s:32px;--r:0deg"><i data-lucide="plus"></i></span>
+        </div>
+        <header class="topbar">
+            <a href="../../hero/hero.html" class="logo" aria-label="Ingenio home">
+                Ingenio
+            </a>
+            <ul class="nav">
+                <li><a href="../../hero/features/features.html" class="tbtn">Features</a></li>
+                <li><a href="../../hero/about/about.html" class="tbtn">About</a></li>
+                <li><a href="../../hero/premium/premium.html" class="tbtn">Premium</a></li>
+            </ul>
+            <div class="actions">
+                <a href="../../login/login.html" class="tbtn">Log in</a>
+                <a href="../../signup/signup.html" class="tbtn tbtn--solid">Sign up</a>
+            </div>
+        </header>
+        <div class="features__head">
+            <h1 class="features__title">Features</h1>
+            <p class="features__sub">Everything you need to go from stuck to sorted on exam day.</p>
+        </div>
+        <section class="hero" id="question_hero">
+            <div class="hero__text">
+                <h1 class="hero__title">High-quality practice questions</h1>
+                <p class="hero__sub">Real exam questions, with instant marking and worked solutions.</p>
+            </div>
+            <div id="question_card_demo">
+            <div class="demo" id="demo" aria-hidden="true">
+                <div class="demo__body" id="demoBody">
+                    <div class="demo__top">
+                        <div class="demo__heading">
+                            <span class="demo__title" id="demoTitle"></span>
+                            <span class="demo__grade" id="demoGrade"></span>
+                            <span class="demo__topic" id="demoTopic"></span>
+                        </div>
+                        <span class="calc" id="demoCalc">
+                            <i data-lucide="calculator"></i>
+                            <span class="calc__badge calc__badge--yes"><i data-lucide="check"></i></span>
+                            <span class="calc__badge calc__badge--no"><i data-lucide="x"></i></span>
+                        </span>
+                    </div>
+                    <p class="demo__text" id="demoText"></p>
+                    <div class="demo__answer">
+                        <div class="demo__box" id="demoBox"></div>
+                        <button type="button" class="demo__check" id="demoCheck" tabindex="-1">Check</button>
+                    </div>
+                    <div class="demo__foot">
+                        <span class="demo__mark"><i data-lucide="circle-check"></i> Correct</span>
+                        <span class="demo__marks">[1 mark]</span>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+        <section class="hero" id="aitutor_hero">
+            <div id="aitutor_card_demo">
+            <div class="chat">
+                <div class="chat__head">
+                    <i data-lucide="sparkles"></i>
+                    AI tutor
+                </div>
+                <div class="chat__log" id="chatLog"></div>
+            </div>
+            </div>
+            <div class="hero__text">
+                <h1 class="hero__title">Integrated AI tutor</h1>
+                <p class="hero__sub">Detailed explanations, hints and working out for any question you need, powered by Claude.</p>
+            </div>
+        </section>
+        <script src="features.js"></script>
+    </body>
+</html>
