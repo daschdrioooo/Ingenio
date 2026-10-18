@@ -14,6 +14,22 @@
         </head>
 
         <body>
+            <header class="topbar">
+                <a href="../home/home.html" class="logo">
+                    <img src="../images/ingenio-logo-black.png" alt="Ingenio" width="1290" height="410">
+                </a>
+                <button id="penBtn">
+                    <i data-lucide="square-pen"></i>
+                </button>
+            </header>
+            <aside id="board">
+                <div class="board-bar">
+                    <button data-tool="pen" class="active" id="pen"><i data-lucide="pen"></i></button>
+                    <button data-tool="eraser" id="eraser"><i data-lucide="eraser"></i></button>
+                    <button id="closeBoard"><i data-lucide="x"></i></button>
+                </div>
+                <canvas id="canvas"></canvas>
+            </aside>
             <div class="doodles" aria-hidden="true">
                 <span style="--x:6%;--y:68%;--s:88px;--r:12deg"><i data-lucide="sigma"></i></span>
                 <span style="--x:42%;--y:9%;--s:54px;--r:14deg"><i data-lucide="pi"></i></span>
@@ -29,10 +45,25 @@
                 <span style="--x:52%;--y:46%;--s:34px;--r:20deg"><i data-lucide="x"></i></span>
                 <span style="--x:66%;--y:12%;--s:32px;--r:0deg"><i data-lucide="plus"></i></span>
             </div>
+            <a href="../home/home.html" class="exit"><i data-lucide="arrow-left"></i>Exit Task</a>
+            <div class="questionsProgress">
+                <div class="progressBox__incorrect">
+                    Q1
+                </div>
+                <div class="progressBox__correct">
+                    Q2
+                </div>
+                <div class="progressBox__active">
+                    Q3
+                </div>
+                <div class="progressBox">
+                    Q4
+                </div>
+            </div>
             <div class="questionBox">
                 <div class="questionBoxTop">
                     <div class="questionBoxHeader">
-                        <span class="questionNumber">Question 1</span>
+                        <span class="questionNumber">Question 3</span>
                         <span class="questionGrade">Grade 1</span>
                         <span class="questionTopic">Simple Addition</span>
                     </div>
