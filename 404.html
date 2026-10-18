@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <title>Ingenio - Page not found</title>
-        <link rel="icon" type="image/png" href="../images/favicon.png">
+        <link rel="icon" type="image/png" href="images/favicon.png">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
@@ -13,8 +13,60 @@
         <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     </head>
     <body>
-        Hi!
-        <i data-lucide="x"></i>
+        <header class="topbar">
+            <a href="hero/hero.html" class="logo" aria-label="Ingenio home">
+                Ingenio
+            </a>
+            <ul class="nav">
+                <li><a href="#features" class="tbtn">Features</a></li>
+                <li><a href="hero/about/about.html" class="tbtn">About</a></li>
+                <li><a href="hero/premium/premium.html" class="tbtn">Premium</a></li>
+            </ul>
+            <div class="actions">
+                <a href="login/login.html" class="tbtn">Log in</a>
+                <a href="signup/signup.html" class="tbtn tbtn--solid">Sign up</a>
+            </div>
+        </header>
+        <div class="doodles" aria-hidden="true">
+                <span style="--x:6%;--y:68%;--s:88px;--r:12deg"><i data-lucide="sigma"></i></span>
+                <span style="--x:42%;--y:9%;--s:54px;--r:14deg"><i data-lucide="pi"></i></span>
+                <span style="--x:90%;--y:13%;--s:70px;--r:-8deg"><i data-lucide="radical"></i></span>
+                <span style="--x:70%;--y:74%;--s:104px;--r:10deg"><i data-lucide="infinity"></i></span>
+                <span style="--x:29%;--y:64%;--s:46px;--r:-18deg"><i data-lucide="divide"></i></span>
+                <span style="--x:95%;--y:48%;--s:50px;--r:20deg"><i data-lucide="percent"></i></span>
+                <span style="--x:57%;--y:82%;--s:76px;--r:-6deg"><i data-lucide="calculator"></i></span>
+                <span style="--x:15%;--y:88%;--s:62px;--r:24deg"><i data-lucide="ruler"></i></span>
+                <span style="--x:84%;--y:86%;--s:68px;--r:-14deg"><i data-lucide="triangle-right"></i></span>
+                <span style="--x:3%;--y:22%;--s:42px;--r:12deg"><i data-lucide="equal"></i></span>
+                <span style="--x:39%;--y:92%;--s:56px;--r:8deg;"><i data-lucide="chart-spline"></i></span>
+                <span style="--x:52%;--y:46%;--s:34px;--r:20deg"><i data-lucide="x"></i></span>
+                <span style="--x:66%;--y:12%;--s:32px;--r:0deg"><i data-lucide="plus"></i></span>
+        </div>
+        <div class="questionBox">
+                <div class="questionBoxTop">
+                    <div class="questionBoxHeader">
+                        <span class="questionNumber">Question 404</span>
+                        <span class="questionGrade">ERROR</span>
+                        <span class="questionTopic">Page not found</span>
+                    </div>
+                    <div class="questionCalc">
+                        <i data-lucide="calculator"></i>
+                        <span class="calcBadge calcYes"><i data-lucide="check"></i></span>
+                    </div>
+                </div>
+                <p class="questionText">Couldn't find the page you were looking for</p>
+                <div class="demoAnswer">
+                    <input class="questionInput" readonly placeholder="404 error - page not found"></input>
+                        <a class="questionCheck" href="home/home.html">
+                            <i data-lucide="arrow-left"></i>
+                            Back to home
+                        </a>
+                </div>
+                <div class="questionFooter">
+                        <span class="mark incorrectMark"><i data-lucide="circle-x"></i> Incorrect</span>
+                        <span class="marks">[1 mark]</span>
+                </div>
+        </div>
         <script src="/404.js"></script>
     </body>
 </html>

@@ -1,0 +1,323 @@
+:root {
+    --bg:#fff;
+    --fg:#0a0a0a;
+    --text:#171717;
+    --muted:#525252;
+    --faint:#a3a3a3;
+    --line:#ebebeb;
+    --hover:#f5f5f5;
+    --accent:#f76b15;
+    --accent-hover:#e05a0a;
+    --top-h:60px;
+    --display:"Manrope";
+    --body:"Inter";
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--body);
+    -webkit-font-smoothing:antialiased;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
+}
+
+.doodles {
+    position:absolute;
+    inset:0;
+    z-index:-1;
+    pointer-events:none;
+}
+
+.doodles span {
+    position:absolute;
+    left:var(--x);
+    top:var(--y);
+    width:var(--s);
+    height:var(--s);
+    color:rgba(247,101,27,0.2);
+    transform:translate(-50%,-50%) rotate(var(--r));
+}
+
+.doodles svg {
+    display:block;
+    width:100%;
+    height:100%;
+}
+
+a {
+    color:inherit;
+    text-decoration:none;
+    font:inherit;
+}
+
+.topbar {
+    height:var(--top-h);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 12px 0 24px;
+    flex-shrink:0;
+    border-bottom: var(--line) solid 1px;
+    background: var(--bg);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    font-family: var(--body);
+    gap:32px;
+}
+
+.logo {
+    font-family:var(--display);
+    font-size:21px;
+    font-weight:700;
+    letter-spacing:-0.035em;
+    line-height:1;
+    color:var(--fg);
+}
+
+.nav {
+    display:flex;
+    gap:4px;
+    list-style:none;
+}
+
+.tbtn {
+    display:flex;
+    align-items:center;
+    gap:6px;
+    height:34px;
+    padding:0 12px;
+    border:none;
+    border-radius:10px;
+    background:none;
+    color:var(--muted);
+    font-size:14px;
+    font-weight:500;
+    white-space:nowrap;
+    cursor:pointer;
+    transition:background 0.15s,color 0.15s;
+}
+
+.tbtn:hover,
+.btn[aria-expanded="true"] {
+    background:var(--hover);
+    color:var(--fg);
+} 
+
+.tbtn svg {
+    width:15px;
+    height:15px;
+    color:var(--faint);
+}
+
+.tbtn--strong {
+    color:var(--fg);
+}
+
+.tbtn--solid {
+    margin-left:4px;
+    background:var(--accent);
+    color:#fff;
+}
+
+.tbtn--solid:hover {
+    background:var(--accent-hover);
+    color:#fff;
+}
+
+.actions {
+    display:flex;
+    align-items:center;
+    gap:4px;
+    margin-left:auto;
+}
+
+.questionBox {
+    margin-top: 64px;
+    min-height: 48vh;
+    min-width: 75vh;
+    border: 2px var(--line) solid;
+    background: var(--bg);
+    border-radius: 18px;
+    padding: 22px 22px 18px;
+}
+
+.questionBoxTop {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:14px;
+}
+
+.questionBoxHeader {
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.questionGrade {
+    flex-shrink:0;
+    padding:3px 8px;
+    border-radius:7px;
+    background:rgba(247,107,21,0.1);
+    color:#c2410c;
+    font-size:12px;
+    font-weight:600;
+}
+
+.questionTopic {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--faint);
+    white-space: nowrap;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.questionNumber {
+    flex-shrink: 0;
+    color: var(--fg);
+    font-family: var(--display);
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.questionCalc {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    color: var(--muted);
+}
+
+.questionCalc > svg{
+    width: 22px;
+    height: 22px;
+}
+
+.calcBadge {
+    position: absolute;
+    right: -2px;
+    bottom: 0;
+    place-items: center;
+    width: 15px;
+    height: 15px;
+    border: 2px solid var(--bg);
+    border-radius: 50%;
+    color: #fff;
+}
+
+.calcYes {
+    display: grid;
+    background: #22c55e;
+}
+
+.calcBadge svg {
+    width:9px;
+    height:9px;
+    stroke-width:3.5;
+}
+
+.questionText {
+    color:var(--fg);
+    font-size:16px;
+    line-height:1.6;
+    padding-bottom: 24px;
+}
+
+.questionInput {
+    display:flex;
+    align-items:center;
+    height:44px;
+    width: 100%;
+    padding:0 14px;
+    border:2px solid var(--line);
+    border-radius:10px;
+    color:var(--fg);
+    font-size:16px;
+}
+
+.questionCheck {
+    height:44px;
+    width: 100%;
+    padding:0 16px;
+    border:none;
+    border-radius:10px;
+    background:var(--accent);
+    color:#fff;
+    font-size:14px;
+    font-family: manrope;
+    font-weight:500;
+    margin-top: 16px;
+    cursor: pointer;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    gap:8px;
+}
+
+.questionCheck svg {
+    width:15px;
+    height:15px;
+}
+
+.questionCheck:hover {
+    background: var(--accent-hover);
+}
+
+.questionCheck:hover svg {
+    animation: nudge-back 0.2s ease forwards;
+}
+
+@keyframes nudge-back {
+    to { transform: translateX(-4px); }
+}
+
+.questionAnswer {
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-top:18px;
+}
+
+.questionFooter {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    min-height:28px;
+    margin-top:14px;
+}
+
+.incorrectMark {
+    display:flex;
+    align-items:center;
+    gap:6px;
+    color:#ef4444;
+    font-size:14px;
+    font-weight:500;
+    transform:translateY(4px);
+}
+
+.mark svg {
+    width:16px;
+    height:16px;
+}
+
+.marks {
+    color:var(--faint);
+    font-size:13px;
+}
