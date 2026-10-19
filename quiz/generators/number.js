@@ -242,3 +242,15 @@ registerTopic({
         });
     },
 });
+
+registerTopic({
+    id:"rounding-significant-figures",
+    title:"Rounding to Significant Figures",
+    group:"Number",
+    blurb:"Round big and small numbers to 1, 2 or 3 significant figures.",
+    grade:3,
+    icon:"target",
+    generate() {
+        const sf=pick([1,2,2,3]);
+    }
+})

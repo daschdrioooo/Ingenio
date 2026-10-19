@@ -16,6 +16,7 @@ Ingenio is built with HTML, CSS, and JS, and doesn't use frameworks. We might us
 - Dashboard (partially done)
 - Onboarding (set up username, grades, target grades, topics)
 - Practice question framework (partially done) - i.e seeded questions making them randomised
+- Practice question generators
 
 - AI tutor (not done)
 - Revision timetable (not done)
