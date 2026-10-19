@@ -90,6 +90,64 @@
                     <div class="terms" id="terms"></div>
                     <div class="topics" id="topicList"></div>
                 </div>
+                <div class="content practice" data-page="practice" hidden>
+                    <div id="practicePick">
+                        <div class="practice__head">
+                            <div>
+                                <h1 class="page__title">Practice questions</h1>
+                                <p class="page__sub">Pick a lesson to practise, or practise a whole topic at once.</p>
+                            </div>
+                            <div class="count" id="countPicker" role="group" aria-label="Questions per set">
+                                <button type="button" data-count="5" aria-pressed="false">5</button>
+                                <button type="button" data-count="10" aria-pressed="true">10</button>
+                                <button type="button" data-count="20" aria-pressed="false">20</button>
+                            </div>
+                        </div>
+                        <div class="courses" id="practiceCourses"></div>
+                        <div class="terms" id="practiceTerms"></div>
+                        <div class="topic" id="practiceTopics"></div>
+                    </div>
+                    <div class="quiz" id="practiceQuiz" hidden>
+                        <button type="button" class="quiz__back" id="quizBack"><i data-lucide="arrow-left"></i> Back to topics</button>
+                        <div class="quiz__head">
+                            <div>
+                                <h1 class="page__title" id="quizTitle"></h1>
+                                <p class="quiz__steps" id="quizSteps"></p>
+                            </div>
+                        </div>
+                        <div class="quiz__bar"><div class="quiz__fill" id="quizFill"></div></div>
+                        <section class="sheet" id="sheet">
+                            <div class="sheet__top">
+                                <span class="sheet_num" id="sheetNum"></span>
+                                <span class="tag" id="sheetGrade"></span>
+                                <span class="sheet__topic" id="sheetTopic"></span>
+                                <span class="sheet__marks">[1 mark]</span>
+                                <span class="calc" id="sheetCalc">
+                                    <i data-lucide="calculator"></i>
+                                    <span class="calc__badge calc__badge--yes"><i data-lucide="check"></i></span>
+                                    <span class="calc__badge calc__badge--no"><i data-lucide="x"></i></span>
+                                </span>
+                            </div>
+                            <p class="sheet_prompt" id="sheetPrompt"></p>
+                            <div id="sheetAnswer"></div>
+                            <div id="sheetFeedback"></div>
+                            <div class="sheet__foot">
+                                <div class="sheet__tip">Press <kbd>Enter</kbd> to <span id="tipAction">check</span></div>
+                                <button type="button" class="btn" id="sheetBtn" disabled>Check answer</button>
+                            </div>
+                        </section>
+                        <section class="results" id="results" hidden>
+                            <p class="results__score" id="resultsScore"></p>
+                            <p class="results__msg" id="resultsMsg"></p>
+                            <span class="results__xp"><i data-lucide="zap"></i> <span id="resultsXp"></span></span>
+                            <ul class="review" id="review"></ul>
+                            <div class="results__btns">
+                                <button type="button" class="btn" id="againBtn"><i data-lucide="rotate-ccw"></i> Try another set</button>
+                                <button type="button" class="btn btn--soft" id="otherBtn">Back to topics</button>
+                            </div>
+                        </section>
+                    </div>
+                </div>
                 <aside class="plan" aria-label="Today's revision plan">
                     <div class="plan__head">
                         <h2 class="plan__title">Today's plan</h2>
@@ -104,9 +162,80 @@
                 </aside>
             </main>
         </div>
+        <nav class="toolrail" id="toolRail" aria-label="Tools" hidden>
+            <button type="button" class="toolrail__btn" id="boardBtn" data-widget="boardWidget" data-label="Whiteboard" aria-label="Whiteboard" aria-pressed="false">
+                <i data-lucide="pen-line"></i>
+            </button>
+            <button type="button" class="toolrail__btn" id="calcBtn" data-widget="calcWidget" data-label="Calculator" aria-label="Calculator" aria-pressed="false">
+                <i data-lucide="calculator"></i>
+            </button>
+        </nav>
+        <section class="widget widget--board" id="boardWidget" hidden aria-label="Whiteboard">
+            <header class="widget__bar">
+                <i data-lucide="grip-vertical" class="widget__grip"></i>
+                <span class="widget__title">Whiteboard</span>
+                <div class="widget__tools">
+                    <button type="button" class="swatch active" data-colour="#171717" style="--swatch:#171717" aria-label="Black pen"></button>
+                    <button type="button" class="swatch" data-colour="#f76b15" style="--swatch:#f76b15" aria-label="Orange pen"></button>
+                    <button type="button" class="swatch" data-colour="#2563eb" style="--swatch:#2563eb" data-label="Blue pen"></button>
+                    <button type="button" class="widget__icon" id="eraserBtn" aria-label="Eraser" aria-pressed="false"><i data-lucide="eraser"></i></button>
+                    <button type="button" class="widget__icon" id="clearBoard" aria-label="Clear the whiteboard"><i data-lucide="trash-2"></i></button>
+                </div>
+                <button type="button" class="widget__icon" data-close="boardWidget" aria-label="Close whiteboard"><i data-lucide="x"></i></button>
+            </header>
+            <div class="board" id="boardArea">
+                <canvas id="boardCanvas"></canvas>
+            </div>
+        </section>
+        <section class="widget widget--calc" id="calcWidget" hidden aria-label="Calculator" tabindex="-1">
+            <header class="widget__bar">
+                <i data-lucide="grip-vertical" class="widget__grip"></i>
+                <span class="widget__title">Calcualtor</span>
+                <button type="button" class="widget__icon" data-close="calcWidget" aria-label="Close calculator"><i data-lucide="x"></i></button>
+            </header>
+            <div class="calc-screen">
+                <p class="calc-screen__expr" id="calcExpr">&nbsp;</p>
+                <p class="calc-screen__value" id="calcValue">0</p>
+            </div>
+            <div class="calc-keys" id="calcKeys">
+                <button type="button" data-key="AC" class="key key--clear">AC</button>
+                <button type="button" data-key="DEL" class="key key--soft">DEL</button>
+                <button type="button" data-key="(" class="key key--soft">(</button>
+                <button type="button" data-key=")" class="key key--soft">)</button>
+                <button type="button" data-key="÷" class="key key--op">÷</button>
+                <button type="button" data-key="7" class="key">7</button>
+                <button type="button" data-key="8" class="key">8</button>
+                <button type="button" data-key="9" class="key">9</button>
+                <button type="button" data-key="√" class="key key--soft">√</button>
+                <button type="button" data-key="×" class="key key--op">×</button>
+                <button type="button" data-key="4" class="key">4</button>
+                <button type="button" data-key="5" class="key">5</button>
+                <button type="button" data-key="6" class="key">6</button>
+                <button type="button" data-key="^" class="key key--soft">xʸ</button>
+                <button type="button" data-key="-" class="key key--op">-</button>
+                <button type="button" data-key="1" class="key">1</button>
+                <button type="button" data-key="2" class="key">2</button>
+                <button type="button" data-key="3" class="key">3</button>
+                <button type="button" data-key="²" class="key key--soft">x²</button>
+                <button type="button" data-key="+" class="key key--op">+</button>
+                <button type="button" data-key="0" class="key">0</button>
+                <button type="button" data-key="." class="key">.</button>
+                <button type="button" data-key="π" class="key key--soft">π</button>
+                <button type="button" data-key="Ans" class="key key--soft">Ans</button>
+                <button type="button" data-key="=" class="key key--equals">=</button>
+            </div>
+        </section>
         <script src="https://cdn.jsdelivr.net/npm/lucide@0.460.0/dist/umd/lucide.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
         <script src="../shared/supabase.js"></script>
+        <script src="../quiz/engine.js"></script>
+        <script src="../quiz/generators/indices.js"></script>
+        <script src="../quiz/generators/surds.js"></script>
+        <script src="../quiz/generators/percentages.js"></script>
+        <script src="../quiz/generators/standard-form.js"></script>
+        <script src="../quiz/generators/equations.js"></script>
         <script src="home.js"></script>
     </body>
 </html>
