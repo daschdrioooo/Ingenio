@@ -867,7 +867,7 @@ function calculate(text,ans) {
             const op=startsValue(peek()) ? "×":next();
             const right=signed();
             if (op==="÷"&&right===0) throw new Error("Cannot divide by 0");
-            value=op==="x">value*right:value/right
+            value=op==="x"?value*right:value/right
         }
         return value;
     }

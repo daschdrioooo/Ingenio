@@ -87,5 +87,34 @@ One row per user created at the end of setup
 icba to go into it
 
 ### quiz_attempts
-icba to go into this either
+quiz_attempts is one row per finished set of practice questions, user_id, score,  topic, total, when it happened. Users can only insert and read their own attempts
 
+### Avatars bucket
+Profile pictures are stored in a public storage bucket called avatars. Each user uploads into a folder named after their own user id, and the storage rules stop anyone from uploading into someone elses folder (i hope). Pictures are limited to 5MB and much be PNG, JPEG or WEBP.
+
+### username_available()
+Small database function that the setup calls to check whether a username is taken before saving.
+
+## The design system
+Everything shares one look (the INGENIO LOOK!!!!!!!!!1)
+
+### Fonts
+- Manrope (700) - wordmark, headers, big numbers, titles
+- Inter (400/600) - everything else
+- KaTeX - maths
+
+### Rules we stick to
+- 2px borders, --line or --line-soft
+- Rounded corners, around 10px on buttons and inputs, 16 to 22px on cards
+- No shadows, except for things that float above the page i.e whiteboard
+- Orange gradient fading down from the top of the page
+- Placeholder text is grey
+
+### Reusable pieces
+- .tbtn - small topbar button
+- .picker - two dropdowns sharing one box
+- .drop, .menu, .menu__item - dropdown & its menu
+- .btn, .btn--soft - big buttons - white w/ border or orange solid
+- .tag - small orange label
+- .card - white box with 2px border
+- .pill - rounded choice btn
