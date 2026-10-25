@@ -45,7 +45,3 @@ Ingenio is built with HTML, CSS, and JS, and doesn't use frameworks. We might us
 - [Supabase](https://supabase.com) - database
 - [KaTeX]{https://katex.org} - math symbol displaying
 - Microsoft Office Online Viewer - PowerPoint Presentations
-
-## License
-Copyright (c) 2026 DaschDrioooo, Carbonicality, all rights reserved.
-Nobody is permitted to use, copy, modify, or distribute this software or its source code for any purpose without explicit written permission from the authors.
