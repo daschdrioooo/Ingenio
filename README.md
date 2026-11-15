@@ -7,6 +7,7 @@ An open source GCSE and A level mathematics revision site, built around the UK c
 Ingenio is built with HTML, CSS, and JS, and doesn't use frameworks. We might use a framework at some point.
 
 > ! NOTE: Ingenio is currently a work in progress! Multiple things don't work yet.
+> ! NOTE: Work on Ingenio has temporarily paused, and we hope to resume work around February - March 2027
 
 ## Features
 - Clean UI (done)
