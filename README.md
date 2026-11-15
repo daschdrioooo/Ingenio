@@ -2,12 +2,13 @@
 Ace your maths exams for completely free!
 An open source GCSE and A level mathematics revision site, built around the UK curriculum by students, for students, using PowerPoints, practice questions, personalised AI tutors, and past papers, all in one place :)
 
+> ! NOTE: Work on Ingenio has temporarily paused, and we hope to resume work around February - March 2027
+
 **Site:** https://daschdrioooo.github.io/Ingenio/hero/hero.html
 
 Ingenio is built with HTML, CSS, and JS, and doesn't use frameworks. We might use a framework at some point.
 
 > ! NOTE: Ingenio is currently a work in progress! Multiple things don't work yet.
-> ! NOTE: Work on Ingenio has temporarily paused, and we hope to resume work around February - March 2027
 
 ## Features
 - Clean UI (done)
